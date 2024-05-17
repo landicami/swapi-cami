@@ -1,6 +1,6 @@
 export interface FilmResponse {
 	current_page: number;
-	data: Film[];
+	data: Films[];
 	next_page_url: number;
 	path: string;
 	per_page: number;
@@ -9,7 +9,7 @@ export interface FilmResponse {
 	total: number;
 }
 
-export interface Film {
+export interface Films {
 	id: number;
 	title: string;
 	episode_id: string;
@@ -25,4 +25,46 @@ export interface Film {
 	vehicles_count: number;
 	species_count: number;
 }
+
+  export interface SingleFilm {
+	id: number;
+	title: string;
+	episode_id: string;
+	opening_crawl: string;
+	director: string;
+	producer: string;
+	release_date: string;
+	created: string;
+	edited: string;
+	characters: Character[];
+	planets: Planet[];
+	starships: Starship[];
+	vehicles: Vehicle[];
+	species: Species[];
+  }
+
+  export interface Character {
+	id: number;
+	name: string;
+  }
+
+  export interface Planet {
+	id: number;
+	name: string;
+  }
+
+  export interface Starship {
+	id: number;
+	name: string;
+  }
+
+  export interface Vehicle {
+	id: number;
+	name: string;
+  }
+
+  export interface Species {
+	id: number;
+	name: string;
+  }
 
