@@ -15,7 +15,7 @@ const Navigation = () => {
                 <Nav className="ms-auto font-starwars">
 
                     <Nav.Link as={NavLink} to="/">Home</Nav.Link>
-                    <Nav.Link as={NavLink} to="/movies">Movies</Nav.Link>
+                    <Nav.Link as={NavLink} to="/films">Films</Nav.Link>
                     <Nav.Link as={NavLink} to="/charachters">Charachters</Nav.Link>
 
 
