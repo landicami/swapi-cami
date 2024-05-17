@@ -6,14 +6,14 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <Navbar bg="light" data-bs-theme="light" expand="md">
+    <Navbar bg="dark" data-bs-theme="dark" expand="md">
         <Container>
-            
-            <Navbar.Brand as={Link} to ="/">May the 🔍 be with you</Navbar.Brand>
+
+            <Navbar.Brand as={Link} to ="/" className="font-starwars">May the 🔍 be with you</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ms-auto">
-                    
+                <Nav className="ms-auto font-starwars">
+
                     <Nav.Link as={NavLink} to="/">Home</Nav.Link>
                     <Nav.Link as={NavLink} to="/movies">Movies</Nav.Link>
                     <Nav.Link as={NavLink} to="/charachters">Charachters</Nav.Link>
