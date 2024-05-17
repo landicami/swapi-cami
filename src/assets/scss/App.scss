@@ -1,7 +1,10 @@
 @import "bootstrap/scss/bootstrap";
 
-#root{
+.background{
     background-image: url(/background.png);
+}
+
+.vh {
 	height: 100vh;
 }
 
