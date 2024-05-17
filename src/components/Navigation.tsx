@@ -15,6 +15,9 @@ const Navigation = () => {
                 <Nav className="ms-auto">
                     
                     <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+                    <Nav.Link as={NavLink} to="/movies">Movies</Nav.Link>
+                    <Nav.Link as={NavLink} to="/charachters">Charachters</Nav.Link>
+
 
                 </Nav>
                 </Navbar.Collapse>
