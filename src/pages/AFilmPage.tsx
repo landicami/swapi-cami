@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import ListGroup from 'react-bootstrap/ListGroup';
 import Image from 'react-bootstrap/Image';
 import { ListGroupItem } from 'react-bootstrap';
+import BacktoFilmBtn from '../components/BacktoFilmBtn';
 
 const AFilmPage = () => {
 	const [film, setFilm] = useState<SingleFilm | null>(null);
@@ -44,8 +45,8 @@ const AFilmPage = () => {
 				<div className='col 6'>
 					<h1 className='font-starwars'>Film</h1>
 				</div>
-				<div className='col-2'>
-					<Link to={"/films"} className='btn btn-warning mt-4' role='button'>Back to films</Link>
+				<div className='col-4 justify-contend-end'>
+					<BacktoFilmBtn/>
 				</div>
 			</div>
 
