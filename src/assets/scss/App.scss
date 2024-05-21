@@ -5,7 +5,7 @@
 }
 
 .vh {
-	height: 100vh;
+	min-height: 100vh;
 }
 
 .font-starwars {
@@ -14,8 +14,20 @@
 }
 
 .white-starwars {
-	color: rgb(211, 206, 206);
+    color: rgb(211, 206, 206);
 	font-family: "Poller One", serif;
+
+}
+
+.link-card {
+	text-decoration: underline yellow;
+	size: 12px;
+
+
+    &:hover {
+        color: yellow; // Change color on hover
+        text-decoration: underline; // Example hover effect
+    }
 }
 
 h1 {
