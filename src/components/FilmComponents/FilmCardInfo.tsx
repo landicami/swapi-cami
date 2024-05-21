@@ -11,6 +11,8 @@ data: FilmResponse | null;
 const FilmCardInfo: React.FC<CardInfoProps> = ({data}) => {
   return (
 	<Container className='row rounded'>
+				{!data && <p>Try again!</p>}
+
 				{data && data.data.length > 0 && (
 
 					<>
