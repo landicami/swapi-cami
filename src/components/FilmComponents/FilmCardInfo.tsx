@@ -15,9 +15,8 @@ const FilmCardInfo: React.FC<CardInfoProps> = ({data}) => {
 
 					<>
 					 {data.data.map(film =>
-					 <Container key={film.id} className='col-12 col-md-6 col-lg-4 mb-3 mt-3'>
-						<Card>
-							{/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+					 <Container key={film.id} className='col-12 col-md-6 col-lg-4 mb-3 mt-3 '>
+						<Card className='border border-warning'>
 								<Card.Body>
 								<div className='d-flex flex-column align-items-center'>
 								<Link to={`/films/${film.id}`} className='btn btn-outline-warning btn-lg font-starwars' role='button'>{film.title}</Link>
@@ -28,6 +27,8 @@ const FilmCardInfo: React.FC<CardInfoProps> = ({data}) => {
 									Releasedate: {film.release_date}
 								</Card.Text>
 								</Card.Body>
+								{/* <Card.Img variant="bottom" src={film.image_url}/> */}
+
 						</Card>
 					 </Container>
 					)}
