@@ -17,6 +17,7 @@ export interface Films {
 	director: string;
 	producer: string;
 	release_date: string;
+	image_url: string;
 	created: string;
 	edited: string;
 	characters_count: number;
@@ -34,6 +35,7 @@ export interface Films {
 	director: string;
 	producer: string;
 	release_date: string;
+	image_url: string;
 	created: string;
 	edited: string;
 	characters: Character[];
