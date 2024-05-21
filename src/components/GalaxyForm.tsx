@@ -21,6 +21,7 @@ const [galaxyInput, setGalaxyInput] = useState("")
 	e.preventDefault();
 	console.log("Searching for", galaxyInput)
 	onSearchGalaxy(galaxyInput)
+	// setGalaxyInput("");
 
 
   }
