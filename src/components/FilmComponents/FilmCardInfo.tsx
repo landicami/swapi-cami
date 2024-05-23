@@ -17,14 +17,27 @@ const FilmCardInfo: React.FC<CardInfoProps> = ({data}) => {
 
 					<>
 					<div className='col-12 mb-3 mt-3'>
-					<p className='font-starwars'>There are {data.total} films in total</p>
+					<p className='font-starwars'>{data.total === 1 ? `There are ${data.total} film showing` : `There are ${data.total} films showing`}</p>
 				</div>
 					 {data.data.map(film =>
 					 <Container key={film.id} className='col-12 col-md-6 col-lg-4 mb-3 mt-3 '>
 						<Card className='border border-warning'>
+						<Card.Body style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+  							<Card.Img
+  							  variant="top"
+  							  src={film.image_url}
+  							  style={{
+  							    width: '20vh',
+  							    height: '20vh',
+  							    objectFit: 'cover',
+  							    borderRadius: '50%'
+  							  }}
+  							/>
+							</Card.Body>
+
 								<Card.Body>
 								<div className='d-flex flex-column align-items-center'>
-								<Link to={`/films/${film.id}`} className='btn btn-outline-warning btn-lg font-starwars' role='button'>{film.title}</Link>
+									<h5 className='font-starwars'>{film.title}</h5>
 								</div>
 
 								<Card.Text className='mt-2'>
@@ -32,7 +45,12 @@ const FilmCardInfo: React.FC<CardInfoProps> = ({data}) => {
 									Releasedate: {film.release_date}
 								</Card.Text>
 								</Card.Body>
-								{/* <Card.Img variant="bottom" src={film.image_url}/> */}
+
+								<div className='col-6 mb-2'>
+									<Link to={`/films/${film.id}`} className='link-starwars ps-3'>Read more...</Link>
+								</div>
+
+
 
 						</Card>
 					 </Container>
