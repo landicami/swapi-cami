@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CharactherResponse } from '../../service/charService/swAPI.chartypes'
 import { getPeople } from '../../service/charService/swAPI.char';
 
@@ -14,7 +14,7 @@ const CharachterPage = () => {
 
 
 	const getAlllCharachters = async () => {
-
+		setIsLoading(true);
 		try {
 			const data = await getPeople();
 			setPeople(data);
@@ -25,6 +25,7 @@ const CharachterPage = () => {
 				setError("NOPE NOPE AND ANOTHER NOPE")
 			}
 		}
+		setIsLoading(false);
 
 	}
 
@@ -47,7 +48,7 @@ const CharachterPage = () => {
 				</Container>
 			)}
 
-		<h1 className='font-starwars'>Films</h1>
+		<h1 className='font-starwars'>Charachters</h1>
 
 
 			{people && people.data.length > 0 && (
@@ -64,7 +65,7 @@ const CharachterPage = () => {
 						<Card className='border border-warning'>
 							<Card.Body>
 							<div className='d-flex flex-column align-items-center'>
-							<Link to={`/charachters/${charachter.id}`} className='btn btn-outline-warning btn-lg font-starwars' role='button'>{charachter.name}</Link>
+							<Link to={`/people/${charachter.id}`} className='btn btn-outline-warning btn-lg font-starwars' role='button'>{charachter.name}</Link>
 							</div>
 
 							<Card.Text className='mt-2'>
