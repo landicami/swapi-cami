@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { CharactherResponse } from '../../service/charService/swAPI.chartypes'
-import { getPeople } from '../../service/charService/swAPI.char';
+import { getPeople, searchACharachter } from '../../service/charService/swAPI.char';
 
 //Bootstrap
 import Card from "react-bootstrap/Card";
 import  Container  from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
+import GalaxyForm from '../../components/GalaxyForm';
 
 const CharachterPage = () => {
 	const [ people, setPeople ] = useState<CharactherResponse | null>(null);
@@ -29,6 +30,23 @@ const CharachterPage = () => {
 
 	}
 
+	const searchGalaxyCharachter = async (galaxySearch: string) => {
+		setIsLoading(true)
+		try {
+			const data = await searchACharachter(galaxySearch);
+			setPeople(data);
+			setError(false)
+		} catch (err) {
+			if(err instanceof Error) {
+				setError(err.message)
+			} else {
+				setError("Wrong something went, galaxy wrong it was!")
+			}
+		}
+		setIsLoading(false)
+
+	  }
+
 	useEffect(() => {
 		getAlllCharachters();
 	}, [])
@@ -49,6 +67,9 @@ const CharachterPage = () => {
 			)}
 
 		<h1 className='font-starwars'>Charachters</h1>
+
+		<GalaxyForm
+		onSearchGalaxy={searchGalaxyCharachter}/>
 
 
 			{people && people.data.length > 0 && (
