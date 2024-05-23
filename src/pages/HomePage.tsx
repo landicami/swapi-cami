@@ -8,7 +8,7 @@ const HomePage = () => {
             <h2 className="font-starwars">You have been requested to search the galaxy for stuff.</h2>
 			<h3 className="font-starwars"> Let's do it!</h3>
 			<Link to="/films" className='btn btn-warning me-2' role='button'>Search for films</Link>
-			<Link to="/charachters" className='btn btn-warning' role='button'>Search for charachters</Link>
+			<Link to="/people" className='btn btn-warning' role='button'>Search for charachters</Link>
 
 
         </div>
