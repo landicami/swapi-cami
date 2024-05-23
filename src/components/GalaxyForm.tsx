@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { searchAMovie } from '../service/filmService/swAPI.films';
 
 //bootstrap
 import Button from "react-bootstrap/Button";

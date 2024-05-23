@@ -5,8 +5,6 @@ import { SingleFilm } from '../../service/filmService/swAPI.filmTypes';
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import ListGroup from 'react-bootstrap/ListGroup';
-import Image from 'react-bootstrap/Image';
-import { ListGroupItem } from 'react-bootstrap';
 import BacktoFilmBtn from '../../components/BacktoFilmBtn';
 
 const AFilmPage = () => {
