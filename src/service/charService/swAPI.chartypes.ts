@@ -20,6 +20,7 @@ export interface CharactherResponse {
 		active: boolean;
 
 	}
+
 	interface Charachter {
 		id: number;
 		name: string,
@@ -42,4 +43,31 @@ export interface CharactherResponse {
 			id: number;
 			name: string;
 		},
+	}
+
+	interface Films {
+		id: number;
+		title: string
+	}
+
+	interface Species {
+		id: number;
+		name: string;
+	}
+
+	interface Starships {
+		id: number;
+		name: string;
+	}
+
+	interface Vehicles {
+		id: number;
+		name: string;
+	}
+
+	export interface ACharachterResponse extends Charachter {
+		films: Films[];
+		species: Species[];
+		starships: Starships[];
+		vehicles: Vehicles[];
 	}
