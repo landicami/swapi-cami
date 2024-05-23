@@ -36,7 +36,7 @@ const FilmPage = () => {
 	setIsLoading(false);
   }
 
-  const searchGalaxy = async (galaxySearch: string) => {
+  const searchGalaxyFilm = async (galaxySearch: string) => {
 	setIsLoading(true)
 	try {
 		const data = await searchAMovie(galaxySearch);
@@ -59,11 +59,11 @@ const FilmPage = () => {
   }, [])
 
   return (
-    <Container>
+    <>
 
     	<h1 className='font-starwars'>Films</h1>
 		<GalaxyForm
-		onSearchGalaxy={searchGalaxy}
+		onSearchGalaxy={searchGalaxyFilm}
 		/>
 
 
@@ -88,7 +88,7 @@ const FilmPage = () => {
 
 
 
-    </Container>
+    </>
   )
 }
 
