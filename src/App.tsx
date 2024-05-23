@@ -27,8 +27,8 @@ function App() {
               <Route path="/films" element={<FilmPage />} />
 			  <Route path="/films/:id" element={<AFilmPage />} />
 
-              <Route path="/charachters" element={<CharachterPage />} />
-			  <Route path="/charachters/:id" element={<ACharachterPage />} />
+              <Route path="/people" element={<CharachterPage />} />
+			  <Route path="/people/:id" element={<ACharachterPage />} />
 
 			  <Route path="*" element={<NotFoundpage />} />
 
