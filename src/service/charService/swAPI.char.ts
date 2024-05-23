@@ -20,3 +20,12 @@ export const getAPeople = async (charachterId: number) => {
 	const res = await axios.get<ACharachterResponse>(`${BASE_URL}/people/${charachterId}`)
 	return res.data;
 }
+
+/**
+ * Search for a charachter
+ */
+
+export const searchACharachter = async (galaxySearch: string) => {
+	const res = await axios.get<CharactherResponse>(`${BASE_URL}/people/?search=${galaxySearch}`);
+	return res.data;
+}
