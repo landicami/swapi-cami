@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CharactherResponse } from "./swAPI.chartypes";
+import { ACharachterResponse, CharactherResponse } from "./swAPI.chartypes";
 
 const BASE_URL = "https://swapi.thehiveresistance.com/api"
 
@@ -9,5 +9,14 @@ const BASE_URL = "https://swapi.thehiveresistance.com/api"
 
 export const getPeople = async () => {
 	const res = await axios.get<CharactherResponse>(BASE_URL + "/people");
+	return res.data;
+}
+
+/**
+ * Get ONE Charachter
+ */
+
+export const getAPeople = async (charachterId: number) => {
+	const res = await axios.get<ACharachterResponse>(`${BASE_URL}/people/${charachterId}`)
 	return res.data;
 }

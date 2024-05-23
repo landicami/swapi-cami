@@ -1,12 +1,63 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { getAPeople } from '../../service/charService/swAPI.char';
+import { ACharachterResponse } from '../../service/charService/swAPI.chartypes';
+import { Container } from 'react-bootstrap';
 
 const ACharachterPage = () => {
+	const [charachter, setCharachter] = useState<ACharachterResponse | null>(null)
+	const [error, setError] = useState<string | false>(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const { id } = useParams();
 	const charachterId = Number(id);
 	console.log(charachterId);
+
+	const getOneCharachterfromAPI = async (charachterId: number) => {
+		setIsLoading(true)
+
+		try {
+			const data = await getAPeople(charachterId);
+			setCharachter(data);
+			console.log(data)
+		}catch (err){
+			if (err instanceof Error) {
+				setError(err.message);
+			} else {
+				setError("ERROR for all what it's worth");
+			}
+		}
+		setIsLoading(false)
+	}
+
+	useEffect(()=> {
+		getOneCharachterfromAPI(charachterId)
+	}, [charachterId]);
+
   return (
-	<div>ACharachterPage with {charachterId}</div>
+	<Container>
+
+		{error && (
+				<Container className='bg-dark'>
+					<p className='font-starwars'>{error}</p>
+				</Container>
+			)}
+
+			{isLoading && (
+				<Container className='bg-dark'>
+					<p className='font-starwars'>Loading...</p>
+				</Container>
+			)}
+
+			{charachter && (
+						<h1 className='font-starwars'>{charachter.name}</h1>
+
+			)}
+			<Link to={"/people"} className='btn btn-warning mt-4 me-2' role='button'>Back to all charachters</Link>
+			<Link to={"/films"} className='btn btn-warning mt-4' role='button'>Back to films</Link>
+
+
+	</Container>
+
   )
 }
 
