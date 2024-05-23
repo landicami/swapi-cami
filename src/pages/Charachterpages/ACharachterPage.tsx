@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getAPeople } from '../../service/charService/swAPI.char';
 import { ACharachterResponse } from '../../service/charService/swAPI.chartypes';
-import { Container } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 
 const ACharachterPage = () => {
 	const [charachter, setCharachter] = useState<ACharachterResponse | null>(null)
