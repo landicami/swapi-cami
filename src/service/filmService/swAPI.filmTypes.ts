@@ -1,12 +1,23 @@
 export interface FilmResponse {
 	current_page: number;
 	data: Films[];
-	next_page_url: number;
+	first_page_url: number;
+	from: number;
+	last_page: number;
+	last_page_url: string;
+	links: Links[];
+	next_page_url: string | null;
 	path: string;
 	per_page: number;
-	prev_page_url: number;
+	prev_page_url: string | null;
 	to: number;
 	total: number;
+}
+
+interface Links {
+	url: string;
+	label: string;
+	active: boolean;
 }
 
 export interface Films {
