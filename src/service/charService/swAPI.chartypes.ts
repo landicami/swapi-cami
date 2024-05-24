@@ -1,21 +1,21 @@
 export interface CharactherResponse {
 		current_page: number;
 		data: Charachter[];
-		first_page_url: string;
+		first_page_url: string | null;
 		from: number;
 		last_page: number;
-		last_page_url: string;
+		last_page_url: string | null;
 		links: Links[];
-		next_page_url: string;
+		next_page_url: string | null;
 		per_page: number;
-		prev_page_ur: null | string;
+		prev_page_url: string | null;
 		to: number;
 		total: number;
 	}
 
 
 	interface Links {
-		url: null | string;
+		url: string | null;
 		label: string;
 		active: boolean;
 
