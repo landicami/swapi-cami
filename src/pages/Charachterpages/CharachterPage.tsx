@@ -3,10 +3,10 @@ import { CharactherResponse } from '../../service/charService/swAPI.chartypes'
 import { getPeople, searchACharachter } from '../../service/charService/swAPI.char';
 
 //Bootstrap
-import Card from "react-bootstrap/Card";
 import  Container  from 'react-bootstrap/Container';
-import { Link } from 'react-router-dom';
 import GalaxyForm from '../../components/GalaxyForm';
+import CharachterCardInfo from '../../components/CharachterComponents/CharachterCardInfo';
+import { Link } from 'react-router-dom';
 
 const CharachterPage = () => {
 	const [ people, setPeople ] = useState<CharactherResponse | null>(null);
@@ -54,6 +54,11 @@ const CharachterPage = () => {
   return (
 	<Container className='row'>
 
+		<h1 className='font-starwars mt-2'>Charachters</h1>
+
+		<GalaxyForm
+		onSearchGalaxy={searchGalaxyCharachter}/>
+
 		{isLoading && (
 				<Container className='bg-dark'>
 					<p className='font-starwars'>Loading...</p>
@@ -66,40 +71,13 @@ const CharachterPage = () => {
 				</Container>
 			)}
 
-		<h1 className='font-starwars'>Charachters</h1>
+			<CharachterCardInfo
+				data={people} />
 
-		<GalaxyForm
-		onSearchGalaxy={searchGalaxyCharachter}/>
+		<div>
+			<Link to={"/people"} className='btn btn-warning mt-4' role='button' onClick={getAlllCharachters}>Get all charachters</Link>
+		</div>
 
-
-			{people && people.data.length > 0 && (
-				<>
-
-				<div className='col-12 mb-3 mt-3'>
-					<p className='font-starwars'>There are {people.total} charachters. Showing {people.per_page} charachers per page</p>
-				</div>
-
-
-
-				{people.data.map(charachter =>
-					<Container key={charachter.id} className='col-12 col-md-6 col-lg-4 mb-3 mt-3 '>
-						<Card className='border border-warning'>
-							<Card.Body>
-							<div className='d-flex flex-column align-items-center'>
-							<Link to={`/people/${charachter.id}`} className='btn btn-outline-warning btn-lg font-starwars' role='button'>{charachter.name}</Link>
-							</div>
-
-							<Card.Text className='mt-2'>
-								In {charachter.films_count} films
-							</Card.Text>
-							</Card.Body>
-							{/* <Card.Img variant="bottom" src={film.image_url}/> */}
-
-							</Card>
-					</Container>
-					)}
-					</>
-					)}
 	</Container>
 )
 }
