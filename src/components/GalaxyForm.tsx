@@ -25,7 +25,7 @@ const [galaxyInput, setGalaxyInput] = useState("")
 
   }
   return (
-		<Container className='col-lg-6 col-sm-12'>
+		<Container className='col-lg-6 col-sm-12 mb-5'>
 			<Form onSubmit={handleGalaxySumbit}>
 				<InputGroup className="mb-3">
 					<Form.Control
