@@ -66,8 +66,6 @@ const FilmPage = () => {
 		onSearchGalaxy={searchGalaxyFilm}
 		/>
 
-
-
 		{isLoading && (
 			<Container className='bg-dark'>
 				<p className='font-starwars'>Loading...</p>
