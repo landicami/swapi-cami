@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { CharactherResponse } from '../../service/charService/swAPI.chartypes'
-import { getPeople, searchACharachter } from '../../service/charService/swAPI.char';
+import { getAllPeople, searchACharachter } from '../../service/charService/swAPI.char';
 
 //Bootstrap
+import Button from "react-bootstrap/Button";
 import  Container  from 'react-bootstrap/Container';
 import GalaxyForm from '../../components/GalaxyForm';
 import CharachterCardInfo from '../../components/CharachterComponents/CharachterCardInfo';
 import { Link } from 'react-router-dom';
+import { Pagination } from 'react-bootstrap';
 
 const CharachterPage = () => {
 	const [ people, setPeople ] = useState<CharactherResponse | null>(null);
@@ -14,10 +16,11 @@ const CharachterPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 
 
-	const getAlllCharachters = async () => {
+	const getAllCharachters = async (url = "https://swapi.thehiveresistance.com/api/people") => {
 		setIsLoading(true);
+		setPeople(null);
 		try {
-			const data = await getPeople();
+			const data = await getAllPeople(url);
 			setPeople(data);
 		} catch (err) {
 			if (err instanceof Error){
@@ -45,10 +48,12 @@ const CharachterPage = () => {
 		}
 		setIsLoading(false)
 
-	  }
+	};
+
+
 
 	useEffect(() => {
-		getAlllCharachters();
+		getAllCharachters();
 	}, [])
 
   return (
@@ -58,6 +63,39 @@ const CharachterPage = () => {
 
 		<GalaxyForm
 		onSearchGalaxy={searchGalaxyCharachter}/>
+
+		{/* <Pagination
+		data={people}
+		getAllRecources={getAllCharachters}
+		/> */}
+
+		{ people && (
+		<div className='row'>
+			<div className='d-flex justify-content-between'>
+				<div>
+				<Button
+				variant="warning"
+				onClick={() => {people.prev_page_url && getAllCharachters(people.prev_page_url)}}
+				disabled={people.prev_page_url === null}
+				>
+					&laquo; Previous</Button>
+				</div>
+				<div className='bg-dark mb-0 p-2 rounded'>
+					<p className='m-0 font-starwars'>
+						{people.current_page} of {people.last_page}
+					</p>
+				</div>
+				<div>
+					<Button
+					variant="warning"
+					onClick={() => {people.next_page_url && getAllCharachters(people.next_page_url)}}
+					disabled={people.next_page_url === null}
+					>
+					Next &raquo;</Button>
+				</div>
+			</div>
+		</div>
+		)}
 
 		{isLoading && (
 				<Container className='bg-dark'>
@@ -71,11 +109,14 @@ const CharachterPage = () => {
 				</Container>
 			)}
 
+
 			<CharachterCardInfo
 				data={people} />
 
+
+
 		<div>
-			<Link to={"/people"} className='btn btn-warning mt-4' role='button' onClick={getAlllCharachters}>Get all charachters</Link>
+			<Link to={"/people"} className='btn btn-warning mt-4' role='button' onClick={() => getAllCharachters()}>Get all charachters</Link>
 		</div>
 
 	</Container>

@@ -11,7 +11,6 @@ data: CharactherResponse | null;
 const CharachterCardInfo: React.FC<CharachterCardInfoProps> = ({data}) => {
   return (
 	<Container className='row rounded'>
-				{!data && <p>Try again!</p>}
 
 				{data && data.data.length > 0 && (
 
@@ -50,7 +49,7 @@ const CharachterCardInfo: React.FC<CharachterCardInfoProps> = ({data}) => {
 								</Card.Text>
 								</Card.Body>
 
-								<div className='col-6 col-md-8 mb-2'>
+								<div className='col-md-8 col-sm-8 mb-2'>
 									<Link to={`/people/${charachter.id}`} className='link-starwars ps-3'>Read more &raquo;</Link>
 								</div>
 
