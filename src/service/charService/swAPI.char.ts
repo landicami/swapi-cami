@@ -7,8 +7,8 @@ const BASE_URL = "https://swapi.thehiveresistance.com/api"
  * Get all charachters
  */
 
-export const getPeople = async () => {
-	const res = await axios.get<CharactherResponse>(BASE_URL + "/people");
+export const getAllPeople = async (url = "https://swapi.thehiveresistance.com/api/people") => {
+	const res = await axios.get<CharactherResponse>(url);
 	return res.data;
 }
 
