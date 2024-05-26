@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import  Container  from 'react-bootstrap/Container';
 import GalaxyForm from '../../components/GalaxyForm';
 import CharachterCardInfo from '../../components/CharachterComponents/CharachterCardInfo';
+
 import { Link } from 'react-router-dom';
 import { Pagination } from 'react-bootstrap';
 
@@ -14,13 +15,17 @@ const CharachterPage = () => {
 	const [ people, setPeople ] = useState<CharactherResponse | null>(null);
 	const [ error, setError ] = useState<string | false>(false)
 	const [isLoading, setIsLoading] = useState(false);
+	const [page, setPage] = useState(1);
+	const [searchQuery, setSearchQuery] = useState("");
 
 
-	const getAllCharachters = async (url = "https://swapi.thehiveresistance.com/api/people") => {
+	const getCharachters = async (page: number = 1) => {
+		setPage(1);
+		setSearchQuery("");
 		setIsLoading(true);
 		setPeople(null);
 		try {
-			const data = await getAllPeople(url);
+			const data = await getAllPeople(page);
 			setPeople(data);
 		} catch (err) {
 			if (err instanceof Error){
@@ -32,29 +37,33 @@ const CharachterPage = () => {
 		setIsLoading(false);
 
 	}
+	const searchGalaxyCharachter = async (galaxySearch: string = "") => {
+        setPage(1); // Sätt sidan till 1 endast vid en ny sökning
+        setSearchQuery(galaxySearch);
+    };
 
-	const searchGalaxyCharachter = async (galaxySearch: string) => {
-		setIsLoading(true)
-		try {
-			const data = await searchACharachter(galaxySearch);
-			setPeople(data);
-			setError(false)
-		} catch (err) {
-			if(err instanceof Error) {
-				setError(err.message)
-			} else {
-				setError("Wrong something went, galaxy wrong it was!")
-			}
-		}
-		setIsLoading(false)
+    const fetchData = async () => {
+        setIsLoading(true);
+        try {
+            const data = searchQuery
+                ? await searchACharachter(searchQuery, page)
+                : await getAllPeople(page);
+            setPeople(data);
+            setError(false);
+        } catch (err) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError("Wrong something went, galaxy wrong it was!");
+            }
+        }
+        setIsLoading(false);
+    };
 
-	};
+    useEffect(() => {
+        fetchData();
+    }, [page, searchQuery]);
 
-
-
-	useEffect(() => {
-		getAllCharachters();
-	}, [])
 
   return (
 	<Container className='row'>
@@ -62,20 +71,21 @@ const CharachterPage = () => {
 		<h1 className='font-starwars mt-2'>Charachters</h1>
 
 		<GalaxyForm
-		onSearchGalaxy={searchGalaxyCharachter}/>
+		onSearchGalaxy={searchGalaxyCharachter}
+		/>
 
 		{/* <Pagination
 		data={people}
 		getAllRecources={getAllCharachters}
 		/> */}
 
-		{ people && (
+		{/* { people && (
 		<div className='row'>
-			<div className='d-flex justify-content-between'>
+			<div className='d-flex justify-content-around'>
 				<div>
 				<Button
 				variant="warning"
-				onClick={() => {people.prev_page_url && getAllCharachters(people.prev_page_url)}}
+				onClick={() => {people.prev_page_url && getCharachters(people.prev_page_url)}}
 				disabled={people.prev_page_url === null}
 				>
 					&laquo; Previous</Button>
@@ -88,7 +98,36 @@ const CharachterPage = () => {
 				<div>
 					<Button
 					variant="warning"
-					onClick={() => {people.next_page_url && getAllCharachters(people.next_page_url)}}
+					onClick={() => {people.next_page_url && getCharachters(people.next_page_url)}}
+					disabled={people.next_page_url === null}
+					>
+					Next &raquo;</Button>
+				</div>
+			</div>
+		</div>
+		)} */}
+
+
+{ people && (
+		<div className='row'>
+			<div className='d-flex justify-content-around'>
+				<div>
+				<Button
+				variant="warning"
+				onClick={() => {setPage(prevValue => prevValue -1)}}
+				disabled={people.prev_page_url === null}
+				>
+					&laquo; Previous</Button>
+				</div>
+				<div className='bg-dark mb-0 p-2 rounded'>
+					<p className='m-0 font-starwars'>
+						{people.current_page} of {people.last_page}
+					</p>
+				</div>
+				<div>
+					<Button
+					variant="warning"
+					onClick={() => {setPage(prevValue => prevValue + 1)}}
 					disabled={people.next_page_url === null}
 					>
 					Next &raquo;</Button>
@@ -116,7 +155,7 @@ const CharachterPage = () => {
 
 
 		<div>
-			<Link to={"/people"} className='btn btn-warning mt-4' role='button' onClick={() => getAllCharachters()}>Get all charachters</Link>
+			<Link to={"/people"} className='btn btn-warning mt-4' role='button' onClick={() => getCharachters(page)}>Get all charachters</Link>
 		</div>
 
 	</Container>
