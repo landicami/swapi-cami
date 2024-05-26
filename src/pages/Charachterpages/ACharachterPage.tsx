@@ -48,10 +48,16 @@ const ACharachterPage = () => {
 				</Container>
 			)}
 
-			{charachter && (
-						<h1 className='font-starwars'>{charachter.name}</h1>
+			{charachter &&
+						<><h1 className='font-starwars'>{charachter.name}</h1>
 
-			)}
+						{charachter.films.map(film =>
+							<li key={film.id}>
+								<Link to={`/films/${film.id}`}>{film.title}</Link></li>
+						)}
+						</>
+						}
+
 			<Link to={"/people"} className='btn btn-warning mt-4 me-2' role='button'>Back to all charachters</Link>
 			<Link to={"/films"} className='btn btn-warning mt-4' role='button'>Back to films</Link>
 
