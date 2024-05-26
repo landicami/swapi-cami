@@ -7,8 +7,8 @@ const BASE_URL = "https://swapi.thehiveresistance.com/api"
  * Get all charachters
  */
 
-export const getAllPeople = async (url = "https://swapi.thehiveresistance.com/api/people") => {
-	const res = await axios.get<CharactherResponse>(url);
+export const getAllPeople = async (page: number) => {
+	const res = await axios.get<CharactherResponse>(`${BASE_URL}/people?page=${page}`);
 	return res.data;
 }
 
@@ -25,7 +25,7 @@ export const getAPeople = async (charachterId: number) => {
  * Search for a charachter
  */
 
-export const searchACharachter = async (galaxySearch: string) => {
-	const res = await axios.get<CharactherResponse>(`${BASE_URL}/people/?search=${galaxySearch}`);
+export const searchACharachter = async (galaxySearch: string, page: number) => {
+	const res = await axios.get<CharactherResponse>(`${BASE_URL}/people/?search=${galaxySearch}&page=${page}`);
 	return res.data;
 }
