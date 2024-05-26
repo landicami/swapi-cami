@@ -20,12 +20,12 @@ const [galaxyInput, setGalaxyInput] = useState("")
 	e.preventDefault();
 	console.log("Searching for", galaxyInput)
 	onSearchGalaxy(galaxyInput)
-	// setGalaxyInput("");
+	setGalaxyInput("");
 
 
   }
   return (
-		<Container className='col-lg-6 col-sm-12 mb-5'>
+		<Container className='col-lg-6 col-sm-12 mb-9'>
 			<Form onSubmit={handleGalaxySumbit}>
 				<InputGroup className="mb-3">
 					<Form.Control
