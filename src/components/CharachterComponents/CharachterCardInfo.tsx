@@ -12,7 +12,7 @@ const CharachterCardInfo: React.FC<CharachterCardInfoProps> = ({data}) => {
   return (
 	<Container className='row rounded'>
 
-				{data && data.data.length > 0 && (
+				{data && data.data.length > 0 ? (
 
 					<>
 					<div className='col-12 mb-3 mt-3'>
@@ -59,6 +59,12 @@ const CharachterCardInfo: React.FC<CharachterCardInfoProps> = ({data}) => {
 					 </Container>
 					)}
 					</>
+				)
+				:
+				(
+					<Container className='bg-dark mt-2 p-2 rounded'>
+						<p className='font-starwars'>Try another search</p>
+					</Container>
 				)
 				}
   </Container>
