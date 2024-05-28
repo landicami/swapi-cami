@@ -18,7 +18,7 @@ const PlanetPage = () => {
 	const [error, setError] = useState<string | false>(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [page, setPage] = useState(1);
-	const [searchQuery, setSearchQuery] = useState("");
+	// const [searchQuery, setSearchQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
 	const searchParamsQuery = searchParams.get("query");
 
@@ -27,7 +27,7 @@ const PlanetPage = () => {
 		setPage(1);
 		setSearchParams({query: galaxySearch.trim()})
 
-		setSearchQuery(galaxySearch);
+		// setSearchQuery(galaxySearch);
 	}
 
 	const getPlanetData = async () => {
@@ -52,7 +52,9 @@ const PlanetPage = () => {
 
 	const execute = () => {
 		setPage(1)
-		setSearchQuery("")
+		// setSearchQuery("")
+		setSearchParams({});
+
 	}
 
 	useEffect(()=> {
@@ -81,8 +83,8 @@ const PlanetPage = () => {
 
 		{planets && <Pagination
 		data={planets}
-		hasNextPage={planets.next_page_url !== null}
-		hasPreviousPage={planets.prev_page_url !== null}
+		hasNextPage={page < planets.last_page}
+		hasPreviousPage={page < planets.from}
 		onNextPage={() => { setPage(prevValue => prevValue + 1) }}
 		onPreviousPage={() => { setPage(prevValue => prevValue - 1) }}
 

@@ -1,6 +1,4 @@
-import React from 'react'
 import Button from "react-bootstrap/Button";
-import { CharactherResponse } from '../service/charService/swAPI.chartypes'
 
 interface PaginationProps<T>{
 	hasNextPage: boolean

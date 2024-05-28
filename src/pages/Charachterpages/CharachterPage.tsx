@@ -17,7 +17,7 @@ const CharachterPage = () => {
 	const [ error, setError ] = useState<string | false>(false)
 	const [isLoading, setIsLoading] = useState(false);
 	const [page, setPage] = useState(1);
-	const [searchQuery, setSearchQuery] = useState("");
+	// const [searchQuery, setSearchQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const searchParamsQuery = searchParams.get("query");
@@ -28,7 +28,7 @@ const CharachterPage = () => {
 		setSearchParams({query: galaxySearch.trim()})
 
 
-        setSearchQuery(galaxySearch.trim());
+        // setSearchQuery(galaxySearch.trim());
     };
 
     const getCharachterData = async () => {
@@ -51,7 +51,7 @@ const CharachterPage = () => {
 
 	const execute = () => {
 		setPage(1)
-		setSearchQuery("")
+		// setSearchQuery("")
 		setSearchParams({});
 	}
 
@@ -75,8 +75,8 @@ const CharachterPage = () => {
 	{ people &&
 		<Pagination
 		data={people}
-		hasNextPage={people.next_page_url !== null}
-		hasPreviousPage={people.prev_page_url !== null}
+		hasNextPage={page < people.last_page}
+		hasPreviousPage={page < people.from}
 		onNextPage={() => { setPage(prevValue => prevValue + 1) }}
 		onPreviousPage={() => { setPage(prevValue => prevValue - 1) }}
 

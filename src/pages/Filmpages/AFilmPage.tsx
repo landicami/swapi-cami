@@ -22,7 +22,6 @@ const AFilmPage = () => {
 		try {
 			const data = await getAMovie(filmId);
 			setFilm(data);
-			console.log(data)
 		}catch (err){
 			if (err instanceof Error) {
 				setError(err.message);

@@ -19,7 +19,7 @@ const FilmPage = () => {
 	const [error, setError] = useState<string | false>(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [page, setPage] = useState(1);
-	const [searchQuery, setSearchQuery] = useState("");
+	// const [searchQuery, setSearchQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const searchParamsQuery = searchParams.get("query");
@@ -28,7 +28,7 @@ const FilmPage = () => {
 		setPage(1);
 		setSearchParams({query: galaxySearch.trim()})
 
-		setSearchQuery(galaxySearch.trim());
+		// setSearchQuery(galaxySearch.trim());
 	}
 
 	const getFilmData = async () => {
@@ -52,7 +52,7 @@ const FilmPage = () => {
 
 	const execute = () => {
 		setPage(1)
-		setSearchQuery("")
+		// setSearchQuery("")
 		setSearchParams({});
 	}
 
@@ -82,8 +82,8 @@ const FilmPage = () => {
 
 		{films && <Pagination
 		data={films}
-		hasNextPage={films.next_page_url !== null}
-		hasPreviousPage={films.prev_page_url !== null}
+		hasNextPage={page < films.last_page}
+		hasPreviousPage={page < films.from}
 		onNextPage={() => { setPage(prevValue => prevValue + 1) }}
 		onPreviousPage={() => { setPage(prevValue => prevValue - 1) }}
 		/>}

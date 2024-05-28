@@ -4,18 +4,17 @@ import Container from "react-bootstrap/Container";
 import HomePage from "./pages/HomePage";
 import Navigation from "./components/Navigation";
 
-import AFilmPage from "./pages/Filmpages/AFilmPage";
-import FilmPage from "./pages/Filmpages/FilmPage";
-
-import CharachterPage from "./pages/Charachterpages/CharachterPage";
 import ACharachterPage from "./pages/Charachterpages/ACharachterPage";
-import "./assets/scss/App.scss";
-
-import NotFoundpage from "./pages/NotFoundpage";
-import PlanetPage from "./pages/Planetpages/PlanetPage";
+import AFilmPage from "./pages/Filmpages/AFilmPage";
 import APlanetPage from "./pages/Planetpages/APlanetPage";
 
+import CharachterPage from "./pages/Charachterpages/CharachterPage";
+import FilmPage from "./pages/Filmpages/FilmPage";
+import PlanetPage from "./pages/Planetpages/PlanetPage";
 
+import NotFoundpage from "./pages/NotFoundpage";
+
+import "./assets/scss/App.scss";
 
 function App() {
 

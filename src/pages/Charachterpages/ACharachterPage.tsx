@@ -11,7 +11,6 @@ const ACharachterPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const { id } = useParams();
 	const charachterId = Number(id);
-	console.log(charachterId);
 
 	const getOneCharachterfromAPI = async (charachterId: number) => {
 		setIsLoading(true)
@@ -19,7 +18,6 @@ const ACharachterPage = () => {
 		try {
 			const data = await getAPeople(charachterId);
 			setCharachter(data);
-			console.log(data)
 		}catch (err){
 			if (err instanceof Error) {
 				setError(err.message);
