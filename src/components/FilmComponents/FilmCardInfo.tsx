@@ -14,9 +14,6 @@ const FilmCardInfo: React.FC<CardInfoProps> = ({data}) => {
 				{data && data.data.length > 0 ? (
 
 					<>
-					<div className='col-12 mb-3 mt-3'>
-					<p className='font-starwars'>{data.total === 1 ? `There are ${data.total} film showing` : `There are ${data.total} films showing`}</p>
-				</div>
 					 {data.data.map(film =>
 					 <Container key={film.id} className='col-12 col-md-6 col-lg-4 mb-3 mt-3 '>
 						<Card className='border border-warning'>
