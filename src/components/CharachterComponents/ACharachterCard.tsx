@@ -64,8 +64,8 @@ const ACharachterCard: React.FC<ACharachterProps> = ({ data }) => {
 				</h5>
 				<ListGroup>
 					{data.films.map(film =>
-						<Link to={`/films/${film.id}`}>
-							<ListGroup.Item className='link-card' key={film.id}>
+						<Link key={film.id} to={`/films/${film.id}`}>
+							<ListGroup.Item className='link-card' >
 								{film.title}
 							</ListGroup.Item>
 						</Link>
