@@ -15,12 +15,7 @@ const CharachterCardInfo: React.FC<CharachterCardInfoProps> = ({data}) => {
 				{data && data.data.length > 0 ? (
 
 					<>
-					<div className='col-12 mb-3 mt-3'>
-					<div className='col-12 mb-3 mt-3'>
-					<p className='font-starwars'>Showing {data.total} charachters, {data.per_page} charachers per page</p>
-				</div>
 
-				</div>
 					 {data.data.map(charachter =>
 
 					 <Container key={charachter.id} className='col-12 col-md-6 col-lg-4 mb-3 mt-3 '>
