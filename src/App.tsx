@@ -7,10 +7,14 @@ import Navigation from "./components/Navigation";
 import ACharachterPage from "./pages/Charachterpages/ACharachterPage";
 import AFilmPage from "./pages/Filmpages/AFilmPage";
 import APlanetPage from "./pages/Planetpages/APlanetPage";
+import ASpeciepage from "./pages/Speciespages/ASpeciepage";
+
 
 import CharachterPage from "./pages/Charachterpages/CharachterPage";
 import FilmPage from "./pages/Filmpages/FilmPage";
 import PlanetPage from "./pages/Planetpages/PlanetPage";
+import Speciespage from "./pages/Speciespages/Speciespage";
+
 
 import NotFoundpage from "./pages/NotFoundpage";
 
@@ -36,6 +40,16 @@ function App() {
 
               <Route path="/people" element={<CharachterPage />} />
 			  <Route path="/people/:id" element={<ACharachterPage />} />
+
+			  <Route path="/species" element={<Speciespage />} />
+			  <Route path="/species/:id" element={<ASpeciepage />} />
+
+			  {/* <Route path="/starships" element={<StarshipsPage />} />
+			  <Route path="/starships/:id" element={<Speciepage />} /> */}
+
+			  {/* <Route path="/vehicles" element={<VehiclesPage />} />
+			  <Route path="/vechiles/:id" element={<AVechiclePage />} /> */}
+
 
 			  <Route path="*" element={<NotFoundpage />} />
 

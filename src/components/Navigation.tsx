@@ -6,7 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <Navbar bg="dark" data-bs-theme="dark" expand="md">
+    <Navbar bg="dark" data-bs-theme="dark" expand="lg">
         <Container>
 
             <Navbar.Brand as={Link} to ="/" className="font-starwars">May the 🔍 be with you</Navbar.Brand>
@@ -18,7 +18,9 @@ const Navigation = () => {
                     <Nav.Link as={NavLink} to="/films">Films</Nav.Link>
                     <Nav.Link as={NavLink} to="/people">Charachters</Nav.Link>
 					<Nav.Link as={NavLink} to="/planets">Planets</Nav.Link>
-
+					<Nav.Link as={NavLink} to="/species">Species</Nav.Link>
+					<Nav.Link as={NavLink} to="/starships">Starships</Nav.Link>
+					<Nav.Link as={NavLink} to="/vechicles">Vechilces</Nav.Link>
 
                 </Nav>
                 </Navbar.Collapse>
