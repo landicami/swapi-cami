@@ -20,7 +20,7 @@ const CharachterPage = () => {
 	const [searchQuery, setSearchQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	const searchParamsQuery = searchParams.get("query");   // search?query=tesla
+	const searchParamsQuery = searchParams.get("query");
 
 
 	const searchGalaxyCharachter = async (galaxySearch: string = "") => {
@@ -28,7 +28,7 @@ const CharachterPage = () => {
 		setSearchParams({query: galaxySearch.trim()})
 
 
-        setSearchQuery(galaxySearch);
+        setSearchQuery(galaxySearch.trim());
     };
 
     const getCharachterData = async () => {
@@ -56,9 +56,6 @@ const CharachterPage = () => {
 	}
 
     useEffect(() => {
-		if(!searchParamsQuery){
-			console.log("no ")
-		}
         getCharachterData();
     }, [page, searchParamsQuery]);
 
