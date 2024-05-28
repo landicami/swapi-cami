@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 
 //Bootstrap
 import  Container  from 'react-bootstrap/Container';
-
 
 //Api stuff
 import { FilmResponse } from '../../service/filmService/swAPI.filmTypes';
@@ -16,42 +15,27 @@ import GalaxyForm from '../../components/GalaxyForm';
 import Pagination from '../../components/Pagination';
 
 const FilmPage = () => {
-  const [films, setFilms] = useState<FilmResponse | null>(null);
-  const [error, setError] = useState<string | false>(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
+	const [films, setFilms] = useState<FilmResponse | null>(null);
+	const [error, setError] = useState<string | false>(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [page, setPage] = useState(1);
+	const [searchQuery, setSearchQuery] = useState("");
+	const [searchParams, setSearchParams] = useSearchParams();
 
+	const searchParamsQuery = searchParams.get("query");
 
-//   const getAllMovies = async (page: number = 1) => {
-// 	setPage(1)
-// 	setSearchQuery("")
-// 	setIsLoading(true)
-// 	setFilms(null)
-//     try {
-//       const data = await getMovies(page);
-//       setFilms(data);
-// 	  setError(false)
-//     } catch (err){
-// 		if (err instanceof Error) {
-// 			setError(err.message);
-// 		} else {
-// 			setError("ERROR for all what it's worth");
-// 		}
-// 	}
-// 	setIsLoading(false);
-//   }
+	const searchGalaxyFilm = async ( galaxySearch: string) => {
+		setPage(1);
+		setSearchParams({query: galaxySearch.trim()})
 
-  const searchGalaxyFilm = async ( galaxySearch: string) => {
-	setPage(1);
-	setSearchQuery(galaxySearch);
-  }
+		setSearchQuery(galaxySearch.trim());
+	}
 
-  const getFilmData = async () => {
-	setIsLoading(true)
+	const getFilmData = async () => {
+		setIsLoading(true)
 	try {
-		const data = searchQuery
-		? await searchAMovie(searchQuery)
+		const data = searchParamsQuery
+		? await searchAMovie(searchParamsQuery)
 		: await getMovies()
 		setFilms(data);
 		setError(false)
@@ -66,14 +50,15 @@ const FilmPage = () => {
 
   }
 
-  const execute = () => {
-	setPage(1)
-	setSearchQuery("")
-}
+	const execute = () => {
+		setPage(1)
+		setSearchQuery("")
+		setSearchParams({});
+	}
 
-  useEffect(()=> {
-	getFilmData();
-  }, [page, searchQuery])
+	useEffect(()=> {
+		getFilmData();
+	}, [searchParamsQuery])
 
   return (
     <>
@@ -101,9 +86,15 @@ const FilmPage = () => {
 		hasPreviousPage={films.prev_page_url !== null}
 		onNextPage={() => { setPage(prevValue => prevValue + 1) }}
 		onPreviousPage={() => { setPage(prevValue => prevValue - 1) }}
-
-
 		/>}
+
+		{films &&
+			<p className='mt-2 font-starwars'>{films.total === 1 ? `There are ${films.total} film showing` : `There are ${films.total} films showing`}</p>
+		}
+
+		{searchParamsQuery &&
+			<p className='font-starwars'>You searched for "{searchParamsQuery}"</p>
+		}
 
 		<FilmCardInfo
 		data={films}
@@ -111,9 +102,6 @@ const FilmPage = () => {
 
 
 		<Link to={"/films"} className='btn btn-warning mt-4' role='button' onClick={execute}>Get all films</Link>
-
-
-
     </>
   )
 }
