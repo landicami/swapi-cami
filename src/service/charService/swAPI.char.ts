@@ -8,7 +8,7 @@ const BASE_URL = "https://swapi.thehiveresistance.com/api"
  */
 
 export const getAllPeople = async (page: number) => {
-	const res = await axios.get<CharactherResponse>(`${BASE_URL}/people?page=${page}`);
+	const res = await axios.get<CharactherResponse>(`${BASE_URL}/people/?page=${page}`);
 	return res.data;
 }
 
