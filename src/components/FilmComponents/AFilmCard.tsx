@@ -37,7 +37,7 @@ const AFilmCard: React.FC<AFilmProps> = ({film}) => {
 				Charachters in {film.title}:
 			</h5>
 			{film.characters.map(charachter =>
-				<Link to={`/people/${charachter.id}`}>
+				<Link key={charachter.id} to={`/people/${charachter.id}`}>
 					<ListGroup>
 						<ListGroup.Item className='link-card'>
 							{charachter.name}
@@ -50,51 +50,52 @@ const AFilmCard: React.FC<AFilmProps> = ({film}) => {
 				Planets in {film.title}:
 			</h5>
 				{film.planets.map(planet =>
-				// <Link to={`/planet/${planet.id}`}>
+				<Link key={planet.id}  to={`/planets/${planet.id}`}>
 					<ListGroup>
-						<ListGroup.Item>
+					<ListGroup.Item className='link-card'>
 							{planet.name}
 						</ListGroup.Item>
 					</ListGroup>
-					// </Link>
+					</Link>
 				)}
 
 				<h5 className='font-starwars mt-4'>
 					Starships in {film.title}:
 				</h5>
 				{film.starships.map(ships =>
-				// <Link to={`/starships/${ships.id}`}>
+				<Link key={ships.id} to={`/starships/${ships.id}`}>
 					<ListGroup>
-						<ListGroup.Item>
+					<ListGroup.Item className='link-card'>
 							{ships.name}
 						</ListGroup.Item>
 					</ListGroup>
+				</Link>
 				)}
 
 				<h5 className='font-starwars mt-4'>
 					Vehicles in {film.title}:
 				</h5>
 				{film.vehicles.map(vehicle =>
-				// <Link to={`/vehicles/${vehicle.id}`}>
+				<Link key={vehicle.id} to={`/vehicles/${vehicle.id}`}>
 					<ListGroup>
-						<ListGroup.Item>
+					<ListGroup.Item className='link-card'>
 							{vehicle.name}
 						</ListGroup.Item>
 					</ListGroup>
-					// </Link>
+					</Link>
 				)}
 
 				<h5 className='font-starwars mt-4'>
 					Species in {film.title}:
 				</h5>
 				{film.species.map(specie =>
-				// <Link to={`/vehicles/${vehicle.id}`}>
+				<Link key={specie.id} to={`/species/${specie.id}`}>
 					<ListGroup>
-						<ListGroup.Item>
+					<ListGroup.Item className='link-card'>
 							{specie.name}
 						</ListGroup.Item>
 					</ListGroup>
-					// </Link>
+					</Link>
 				)}
 	</Card>
   )
