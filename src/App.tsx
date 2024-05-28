@@ -11,6 +11,7 @@ import CharachterPage from "./pages/Charachterpages/CharachterPage";
 import ACharachterPage from "./pages/Charachterpages/ACharachterPage";
 import "./assets/scss/App.scss";
 import NotFoundpage from "./pages/NotFoundpage";
+import PlanetPage from "./pages/Planetpages/PlanetPage";
 
 
 
@@ -26,6 +27,8 @@ function App() {
 
               <Route path="/films" element={<FilmPage />} />
 			  <Route path="/films/:id" element={<AFilmPage />} />
+
+			  <Route path="/planets" element={<PlanetPage />} />
 
               <Route path="/people" element={<CharachterPage />} />
 			  <Route path="/people/:id" element={<ACharachterPage />} />
