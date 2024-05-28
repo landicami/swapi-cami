@@ -1,25 +1,24 @@
 import React from 'react'
 import Button from "react-bootstrap/Button";
 import { CharactherResponse } from '../service/charService/swAPI.chartypes'
-import { FilmResponse } from '../service/filmService/swAPI.filmTypes';
 
-interface PaginationProps{
+interface PaginationProps<T>{
 	hasNextPage: boolean
 	hasPreviousPage: boolean;
 
-	data: CharactherResponse | FilmResponse;
+	data: T;
 	onNextPage: () => void;
 	onPreviousPage: () => void;
 
 }
 
-const Pagination: React.FC<PaginationProps> = ({
+const Pagination = <T extends { current_page: number; last_page: number }>({
 	data,
 	hasPreviousPage,
 	hasNextPage,
 	onNextPage,
-	onPreviousPage
-	}) => {
+	onPreviousPage,
+  }: PaginationProps<T>) => {
   return (
 
 		<div className='row'>
