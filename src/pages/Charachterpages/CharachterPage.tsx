@@ -10,7 +10,7 @@ import GalaxyForm from '../../components/GalaxyForm';
 import CharachterCardInfo from '../../components/CharachterComponents/CharachterCardInfo';
 import Pagination from '../../components/Pagination';
 
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 const CharachterPage = () => {
 	const [ people, setPeople ] = useState<CharactherResponse | null>(null);
@@ -18,37 +18,24 @@ const CharachterPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [page, setPage] = useState(1);
 	const [searchQuery, setSearchQuery] = useState("");
+	const [searchParams, setSearchParams] = useSearchParams();
+
+	const searchParamsQuery = searchParams.get("query");   // search?query=tesla
 
 
-	// const getCharachters = async (page: number = 1) => {
-	// 	setPage(1);
-	// 	setSearchQuery("");
-	// 	setIsLoading(true);
-	// 	setPeople(null);
-	// 	try {
-	// 		const data = await getAllPeople(page);
-	// 		setPeople(data);
-	// 		setError(false);
-	// 	} catch (err) {
-	// 		if (err instanceof Error){
-	// 			setError(err.message)
-	// 		} else {
-	// 			setError("NOPE NOPE AND ANOTHER NOPE")
-	// 		}
-	// 	}
-	// 	setIsLoading(false);
-
-	// }
 	const searchGalaxyCharachter = async (galaxySearch: string = "") => {
         setPage(1);
+		setSearchParams({query: galaxySearch.trim()})
+
+
         setSearchQuery(galaxySearch);
     };
 
     const getCharachterData = async () => {
         setIsLoading(true);
         try {
-            const data = searchQuery
-                ? await searchACharachter(searchQuery, page)
+            const data = searchParamsQuery
+                ? await searchACharachter(searchParamsQuery, page)
                 : await getAllPeople(page);
             setPeople(data);
             setError(false);
@@ -65,11 +52,15 @@ const CharachterPage = () => {
 	const execute = () => {
 		setPage(1)
 		setSearchQuery("")
+		setSearchParams({});
 	}
 
     useEffect(() => {
+		if(!searchParamsQuery){
+			console.log("no ")
+		}
         getCharachterData();
-    }, [page, searchQuery]);
+    }, [page, searchParamsQuery]);
 
 
 
@@ -106,6 +97,15 @@ const CharachterPage = () => {
 				</Container>
 			)}
 
+
+		{people &&
+		<p className='font-starwars mt-3'>{people.total} charachters, {people.per_page} charachers per page</p>
+		}
+
+		{searchParamsQuery &&
+					<p className='font-starwars'>You searched for "{searchParamsQuery}"</p>
+
+		}
 
 			<CharachterCardInfo
 				data={people} />
