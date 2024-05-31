@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getACharachter } from '../../service/charService/swAPI.char';
-import { ACharachterResponse } from '../../service/charService/swAPI.chartypes';
+import { ACharachter } from '../../service/charService/swAPI.chartypes';
 import Container from 'react-bootstrap/Container';
 import ACharachterCard from '../../components/CharachterComponents/ACharachterCard';
 
 const ACharachterPage = () => {
-	const [charachter, setCharachter] = useState<ACharachterResponse | null>(null)
+	const [charachter, setCharachter] = useState<ACharachter | null>(null)
 	const [error, setError] = useState<string | false>(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const { id } = useParams();

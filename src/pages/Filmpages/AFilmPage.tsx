@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import { getAMovie } from '../../service/filmService/swAPI.films';
-import { SingleFilm } from '../../service/filmService/swAPI.filmTypes';
+import { ASingleFilm } from '../../service/filmService/swAPI.filmTypes';
 
 import Container from "react-bootstrap/Container";
 
 import AFilmCard from '../../components/FilmComponents/AFilmCard';
 
 const AFilmPage = () => {
-	const [film, setFilm] = useState<SingleFilm | null>(null);
+	const [film, setFilm] = useState<ASingleFilm | null>(null);
 	const [error, setError] = useState<string | false>(false);
 	const [isLoading, setIsLoading] = useState(false);
 
