@@ -39,15 +39,9 @@ const AFilmPage = () => {
 
   return (
 	<Container className='m-auto'>
-			<div className='row'>
-				<div className='col 6'>
-					<h1 className='font-starwars'>Film</h1>
-				</div>
 
-				<div className='col-4 justify-contend-end'>
-					<Link to={"/films"} className='btn btn-warning mt-4' role='button'>Back to films</Link>
-				</div>
-			</div>
+			<h1 className='font-starwars'>Film</h1>
+
 
 			{error && (
 				<Container className='bg-dark'>
@@ -66,6 +60,10 @@ const AFilmPage = () => {
 				film={film}
 				/>
 			)}
+
+			<div className='col-4 justify-contend-end'>
+				<Link to={"/films"} className='btn btn-warning mt-4' role='button'>Back to films</Link>
+			</div>
 	</Container>
   )
 }

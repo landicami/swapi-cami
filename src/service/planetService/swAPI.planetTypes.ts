@@ -36,7 +36,9 @@ export interface Planet {
 	to: number;
 	total: number;
   }
-
+/**
+ * A Planet
+ */
   export interface Resident {
 	id: number;
 	name: string;

@@ -5,14 +5,13 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { ASpecie } from "../../service/specieService/swAPI.specieTypes";
 
-
 interface ASpecieProps {
 	specie: ASpecie;
 }
 
 const ASpecieCard: React.FC<ASpecieProps> = ({specie}) => {
-  return (
-  <>
+	return (
+  	<>
   	<h1 className='font-starwars'>Specie</h1>
 
 	<Card className='bg-dark row rounded col-10 p-2'>
@@ -21,7 +20,6 @@ const ASpecieCard: React.FC<ASpecieProps> = ({specie}) => {
 		</Card.Body>
 
 		<ListGroup className="list-group-flush">
-
 			<ListGroup.Item>Classification: {specie.classification}</ListGroup.Item>
 			<ListGroup.Item>Designation: {specie.designation}</ListGroup.Item>
 			<ListGroup.Item>Average height: {specie.average_height}</ListGroup.Item>
@@ -30,7 +28,6 @@ const ASpecieCard: React.FC<ASpecieProps> = ({specie}) => {
 			<ListGroup.Item>Hair colors: {specie.hair_colors}</ListGroup.Item>
 			<ListGroup.Item>Skin colors: {specie.skin_colors}</ListGroup.Item>
 			<ListGroup.Item>Language: {specie.language}</ListGroup.Item>
-
 		</ListGroup>
 
 			<h5 className='font-starwars mt-4'>

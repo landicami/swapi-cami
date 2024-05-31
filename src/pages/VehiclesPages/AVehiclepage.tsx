@@ -21,7 +21,6 @@ const AVehiclepage = () => {
 		try {
 			const data = await getAVehicle(vehicleId);
 			setVehicle(data);
-			console.log(data)
 		}catch (err){
 			if (err instanceof Error) {
 				setError(err.message);

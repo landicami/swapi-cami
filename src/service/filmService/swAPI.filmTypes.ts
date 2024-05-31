@@ -38,7 +38,9 @@ export interface Films {
 	species_count: number;
 }
 
-  export interface SingleFilm {
+/** A Single Film */
+
+  export interface ASingleFilm {
 	id: number;
 	title: string;
 	episode_id: string;

@@ -11,7 +11,7 @@ interface AStarshipProps {
 }
 
 const AStarshipCard: React.FC<AStarshipProps> = ({starship}) => {
-  return (
+	return (
 	<>
 	  	<h1 className='font-starwars'>Starship</h1>
 
@@ -21,7 +21,6 @@ const AStarshipCard: React.FC<AStarshipProps> = ({starship}) => {
 		</Card.Body>
 
 		<ListGroup className="list-group-flush">
-
 			<ListGroup.Item>Starship model: {starship.model}</ListGroup.Item>
 			<ListGroup.Item>Starship class: {starship.starship_class}</ListGroup.Item>
 			<ListGroup.Item>Manufacturer: {starship.manufacturer}</ListGroup.Item>
@@ -34,7 +33,6 @@ const AStarshipCard: React.FC<AStarshipProps> = ({starship}) => {
 			<ListGroup.Item>MGLT {starship.MGLT}</ListGroup.Item>
 			<ListGroup.Item>Cargo capacity: {new Intl.NumberFormat().format(Number(starship.cargo_capacity))}</ListGroup.Item>
 			<ListGroup.Item>Consumables: {starship.consumables}</ListGroup.Item>
-
 		</ListGroup>
 
 		 <h5 className='font-starwars mt-4'>
@@ -58,7 +56,6 @@ const AStarshipCard: React.FC<AStarshipProps> = ({starship}) => {
 				</ListGroup>
 
 			)}
-
 
 			<h5 className='font-starwars mt-4'>
 				Seen in:

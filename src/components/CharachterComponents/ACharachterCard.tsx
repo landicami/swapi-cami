@@ -2,15 +2,14 @@ import React from 'react'
 import Card from "react-bootstrap/Card";
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom';
-import { ACharachterResponse } from '../../service/charService/swAPI.chartypes';
-
+import { ACharachter } from '../../service/charService/swAPI.chartypes';
 
 interface ACharachterProps {
-	data: ACharachterResponse
+	data: ACharachter
 }
 
 const ACharachterCard: React.FC<ACharachterProps> = ({ data }) => {
-  return (
+	return (
 	<>
 	<h1 className='font-starwars'>Charachter</h1>
 
@@ -19,6 +18,7 @@ const ACharachterCard: React.FC<ACharachterProps> = ({ data }) => {
 			<Card.Img
   			src={data.image_url}
   			className='picture-in-card'
+			alt="A StarWars charachter"
   			/>
 			<Card.Title className='font-starwars'>
 				{data.name}
@@ -26,52 +26,57 @@ const ACharachterCard: React.FC<ACharachterProps> = ({ data }) => {
         </Card.Body>
 
 		<ListGroup className="list-group-flush">
-
-			<ListGroup.Item>Height:  {data.height} cm</ListGroup.Item>
-			<ListGroup.Item>Weight:  {data.mass} kg</ListGroup.Item>
-			<ListGroup.Item>Birthyear:  {data.birth_year}</ListGroup.Item>
-			<ListGroup.Item>Eye-color:  {data.eye_color}</ListGroup.Item>
-			<ListGroup.Item>Hair-color:  {data.hair_color}</ListGroup.Item>
-			<ListGroup.Item>Skin-color:  {data.skin_color}</ListGroup.Item>
+			<ListGroup.Item>Height: {data.height} cm</ListGroup.Item>
+			<ListGroup.Item>Weight: {data.mass} kg</ListGroup.Item>
+			<ListGroup.Item>Birthyear: {data.birth_year}</ListGroup.Item>
+			<ListGroup.Item>Eye-color: {data.eye_color}</ListGroup.Item>
+			<ListGroup.Item>Hair-color: {data.hair_color}</ListGroup.Item>
+			<ListGroup.Item>Skin-color: {data.skin_color}</ListGroup.Item>
 			<ListGroup.Item><Link to={data.wiki_link}>Wiki-link</Link></ListGroup.Item>
-			<ListGroup.Item>Hair-color:  {data.hair_color}</ListGroup.Item>
-			<ListGroup.Item>Home-world: {data.homeworld.name}</ListGroup.Item>
+			<ListGroup.Item>Hair-color: {data.hair_color}</ListGroup.Item>
+			<ListGroup.Item>Home-world:{data.homeworld.name}</ListGroup.Item>
 		</ListGroup>
 
 			<h5 className='font-starwars mt-4'>
 				Affiliations:
 			</h5>
-			<ListGroup className='ms-3'>
 				{data.affiliations.length > 0
 					? (
 						data.affiliations.map((affiliation, index) => (
-							<ListGroup.Item key={index}>
-								{affiliation}
-							</ListGroup.Item>
+							<ListGroup key={index}>
+								<ListGroup.Item >
+									{affiliation}
+								</ListGroup.Item>
+							</ListGroup>
 						))
 					) : (
-						<ListGroup.Item>
-							No affiliations for this character
-						</ListGroup.Item>
+						<ListGroup>
+							<ListGroup.Item>
+								No affiliations for this character
+							</ListGroup.Item>
+						</ListGroup>
 					)
 				}
-			</ListGroup>
-
-			{data.films.length > 0 &&
-				<>
-				<h5 className='font-starwars mt-4'>
+			<h5 className='font-starwars mt-4'>
 					Stars in:
 				</h5>
-				<ListGroup>
-					{data.films.map(film =>
-						<Link key={film.id} to={`/films/${film.id}`}>
-							<ListGroup.Item className='link-card' >
-								{film.title}
-							</ListGroup.Item>
-						</Link>
-					)}
-				</ListGroup>
-				</>
+				{data.films.length > 0 ?
+					(data.films.map(film =>
+						<ListGroup key={film.id}>
+							<Link  to={`/films/${film.id}`}>
+								<ListGroup.Item className='link-card' >
+									{film.title}
+								</ListGroup.Item>
+							</Link>
+						</ListGroup>
+					)
+					) : (
+						<ListGroup>
+						<ListGroup.Item>
+							No movies for this character
+						</ListGroup.Item>
+					</ListGroup>
+					)
 				}
 
 

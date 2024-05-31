@@ -20,7 +20,6 @@ const ASpeciepage = () => {
 		try {
 			const data = await getASpecie(specieId);
 			setSpecie(data);
-			console.log(data)
 		}catch (err){
 			if (err instanceof Error) {
 				setError(err.message);
@@ -53,7 +52,6 @@ const ASpeciepage = () => {
 			{specie && <ASpecieCard specie={specie} />}
 
 			<Link to={"/species"} className='btn btn-warning mt-4 me-2' role='button'>Back to all species</Link>
-
 
 	</Container>
 

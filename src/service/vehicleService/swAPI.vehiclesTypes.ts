@@ -1,4 +1,3 @@
-// Typ för enskilt fordon
 interface Vehicle {
     id: number;
     name: string;
@@ -18,14 +17,12 @@ interface Vehicle {
     films_count: number;
 }
 
-// Typ för länkar i API-svaret
 interface Link {
     url: string | null;
     label: string;
     active: boolean;
 }
 
-// Typ för VehicleResponse
 export interface VehicleResponse {
     current_page: number;
     data: Vehicle[];

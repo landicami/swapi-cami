@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 
 import { AStarship } from '../../service/starshipService/swAPI.starshipsTypes';
-import { getAStarship } from '../../service/starshipService/swAPI.species';
+import { getAStarship } from '../../service/starshipService/swAPI.starships';
 import AStarshipCard from '../../components/StarshipsComponents/AStarshipCard';
 
 
@@ -21,7 +21,6 @@ const AStarshippage = () => {
 		try {
 			const data = await getAStarship(starshipId);
 			setStarship(data);
-			console.log(data)
 		}catch (err){
 			if (err instanceof Error) {
 				setError(err.message);
@@ -54,7 +53,6 @@ const AStarshippage = () => {
 			{starship && <AStarshipCard starship={starship} />}
 
 			<Link to={"/starships"} className='btn btn-warning mt-4 me-2' role='button'>Back to all starships</Link>
-
 
 	</Container>
 

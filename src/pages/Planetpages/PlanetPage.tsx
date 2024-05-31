@@ -17,45 +17,37 @@ const PlanetPage = () => {
 	const [planets, setPlanets] = useState<PlanetResponse | null>(null);
 	const [error, setError] = useState<string | false>(false);
 	const [isLoading, setIsLoading] = useState(false);
-	// const [page, setPage] = useState(1);
-	// const [searchQuery, setSearchQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
 	const searchParamsQuery = searchParams.get("query");
 	const pageParams = Number(searchParams.get("page")) || 1;
 
 
 	const searchGalaxyPlanet = async ( galaxySearch: string) => {
-		// setPage(1);
 		setSearchParams({query: galaxySearch.trim(), page: "1"})
-
-		// setSearchQuery(galaxySearch);
 	}
 
 	const getPlanetData = async () => {
 		setIsLoading(true)
-	try {
-		const data = searchParamsQuery
-		? await searchAPlanet(searchParamsQuery, pageParams)
-		: await getPlanets(pageParams)
-		setPlanets(data);
-		setIsLoading(false)
+		try {
+			const data = searchParamsQuery
+			? await searchAPlanet(searchParamsQuery, pageParams)
+			: await getPlanets(pageParams)
+			setPlanets(data);
+			setIsLoading(false)
 
-		setError(false)
-	} catch (err) {
-		if(err instanceof Error) {
-			setError(err.message)
-		} else {
-			setError("Wrong something went, galaxy wrong it was!")
+			setError(false)
+		} catch (err) {
+			if(err instanceof Error) {
+				setError(err.message)
+			} else {
+				setError("Wrong something went, galaxy wrong it was!")
+			}
 		}
-	}
 		setIsLoading(false)
 	}
 
 	const execute = () => {
-		// setPage(1)
-		// setSearchQuery("")
 		setSearchParams({ query: "", page: "1"});
-
 	}
 
 	useEffect(()=> {
@@ -89,16 +81,14 @@ const PlanetPage = () => {
 		hasPreviousPage={pageParams < planets.from}
 		onNextPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams + 1).toString() })}
 		onPreviousPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams - 1).toString() })}
-
-
 		/>}
 
 		{planets &&
-		<p className='font-starwars mt-3'>{planets.total} planets, {planets.per_page} planets max per page</p>
+			<p className='font-starwars mt-3'>{planets.total} planets, {planets.per_page} planets max per page</p>
 		}
 
 		{searchParamsQuery &&
-					<p className='font-starwars'>You searched for "{searchParamsQuery}"</p>
+			<p className='font-starwars'>You searched for "{searchParamsQuery}"</p>
 
 		}
 
@@ -108,8 +98,6 @@ const PlanetPage = () => {
 
 
 		<Link to={"/planets"} className='btn btn-warning mt-4' role='button' onClick={execute}>Get all planets</Link>
-
-
 
     </>
   )

@@ -6,7 +6,7 @@ import  Container  from 'react-bootstrap/Container';
 
 //Api stuff
 import { VehicleResponse } from '../../service/vehicleService/swAPI.vehiclesTypes';
-import { getVehicles, searchAVehcile } from '../../service/vehicleService/swAPI.vehicles';
+import { getVehicles, searchAVehicle } from '../../service/vehicleService/swAPI.vehicles';
 
 //Components
 import GalaxyForm from '../../components/GalaxyForm';
@@ -18,45 +18,37 @@ const Vehiclespage = () => {
 	const [vehicles, setVehicles] = useState<VehicleResponse | null>(null);
 	const [error, setError] = useState<string | false>(false);
 	const [isLoading, setIsLoading] = useState(false);
-	// const [page, setPage] = useState(1);
-	// const [searchQuery, setSearchQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
 	const searchParamsQuery = searchParams.get("query");
 	const pageParams = Number(searchParams.get("page")) || 1;
 
 
 	const searchGalaxyVehicles = async ( galaxySearch: string) => {
-		// setPage(1);
 		setSearchParams({query: galaxySearch.trim(), page: "1"})
-
-		// setSearchQuery(galaxySearch);
 	}
 
 	const getVehiclesData = async () => {
 		setIsLoading(true)
-	try {
-		const data = searchParamsQuery
-		? await searchAVehcile(searchParamsQuery, pageParams)
-		: await getVehicles(pageParams)
-		setVehicles(data);
-		setIsLoading(false)
+		try {
+			const data = searchParamsQuery
+			? await searchAVehicle(searchParamsQuery, pageParams)
+			: await getVehicles(pageParams)
+			setVehicles(data);
+			setIsLoading(false)
 
-		setError(false)
-	} catch (err) {
-		if(err instanceof Error) {
-			setError(err.message)
-		} else {
-			setError("Wrong something went, galaxy wrong it was!")
+			setError(false)
+		} catch (err) {
+			if(err instanceof Error) {
+				setError(err.message)
+			} else {
+				setError("Wrong something went, galaxy wrong it was!")
+			}
 		}
-	}
 		setIsLoading(false)
 	}
 
 	const execute = () => {
-		// setPage(1)
-		// setSearchQuery("")
 		setSearchParams({ query: "", page: "1"});
-
 	}
 
 	useEffect(()=> {
@@ -90,27 +82,21 @@ const Vehiclespage = () => {
 		hasPreviousPage={pageParams < vehicles.from}
 		onNextPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams + 1).toString() })}
 		onPreviousPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams - 1).toString() })}
-
 		/>}
 
 		{vehicles &&
-		<p className='font-starwars mt-3'>{vehicles.total} vehicles, {vehicles.per_page} vehicles max per page</p>
+			<p className='font-starwars mt-3'>{vehicles.total} vehicles, {vehicles.per_page} vehicles max per page</p>
 		}
 
 		{searchParamsQuery &&
-					<p className='font-starwars'>You searched for "{searchParamsQuery}"</p>
-
+			<p className='font-starwars'>You searched for "{searchParamsQuery}"</p>
 		}
 
 		<VehiclesCardInfo
 		data={vehicles}
 		/ >
 
-
 		<Link to={"/vehicles"} className='btn btn-warning mt-4' role='button' onClick={execute}>Get all vehicles</Link>
-
-
-
     </>
   )
 }

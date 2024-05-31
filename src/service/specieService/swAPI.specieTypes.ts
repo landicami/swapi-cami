@@ -43,6 +43,8 @@ export interface Link {
     active: boolean;
 }
 
+/** A Specie */
+
 export interface Person {
     id: number;
     name: string;

@@ -18,8 +18,7 @@ const FilmPage = () => {
 	const [films, setFilms] = useState<FilmResponse | null>(null);
 	const [error, setError] = useState<string | false>(false);
 	const [isLoading, setIsLoading] = useState(false);
-	// const [page, setPage] = useState(1);
-	// const [searchQuery, setSearchQuery] = useState("");
+
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const searchParamsQuery = searchParams.get("query");
@@ -27,34 +26,28 @@ const FilmPage = () => {
 
 
 	const searchGalaxyFilm = async ( galaxySearch: string) => {
-		// setPage(1);
 		setSearchParams({query: galaxySearch.trim(), page: "1"})
-
-		// setSearchQuery(galaxySearch.trim());
 	}
 
 	const getFilmData = async () => {
 		setIsLoading(true)
-	try {
-		const data = searchParamsQuery
-		? await searchAMovie(searchParamsQuery, pageParams)
-		: await getMovies(pageParams)
-		setFilms(data);
-		setError(false)
-	} catch (err) {
-		if(err instanceof Error) {
-			setError(err.message)
-		} else {
-			setError("Wrong something went, galaxy wrong it was!")
+		try {
+			const data = searchParamsQuery
+			? await searchAMovie(searchParamsQuery, pageParams)
+			: await getMovies(pageParams)
+			setFilms(data);
+			setError(false)
+		} catch (err) {
+			if(err instanceof Error) {
+				setError(err.message)
+			} else {
+				setError("Wrong something went, galaxy wrong it was!")
+			}
 		}
+		setIsLoading(false)
 	}
-	setIsLoading(false)
-
-  }
 
 	const execute = () => {
-		// setPage(1)
-		// setSearchQuery("")
 		setSearchParams({ query: "", page: "1"});
 	}
 
@@ -102,7 +95,6 @@ const FilmPage = () => {
 		<FilmCardInfo
 		data={films}
 		/ >
-
 
 		<Link to={"/films"} className='btn btn-warning mt-4' role='button' onClick={execute}>Get all films</Link>
     </>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FilmResponse, SingleFilm } from "./swAPI.filmTypes";
+import { ASingleFilm, FilmResponse } from "./swAPI.filmTypes";
 
 const BASE_URL = "https://swapi.thehiveresistance.com/api";
 
@@ -17,7 +17,7 @@ export const getMovies = async (page: number) => {
  */
 
 export const getAMovie = async (filmId:  number) => {
-	const res = await axios.get<SingleFilm>(`${BASE_URL}/films/${filmId}`);
+	const res = await axios.get<ASingleFilm>(`${BASE_URL}/films/${filmId}`);
 	return res.data;
 }
 

@@ -11,7 +11,7 @@ interface AVehicleProps {
 }
 
 const AVehicleCard: React.FC<AVehicleProps> = ({vehicle}) => {
-  return (
+	return (
 	<>
 	  	<h1 className='font-starwars'>Vehicle</h1>
 
@@ -21,7 +21,6 @@ const AVehicleCard: React.FC<AVehicleProps> = ({vehicle}) => {
 		</Card.Body>
 
 		<ListGroup className="list-group-flush">
-
 			<ListGroup.Item>Vehicle model: {vehicle.model}</ListGroup.Item>
 			<ListGroup.Item>Vehicle class: {vehicle.vehicle_class}</ListGroup.Item>
 			<ListGroup.Item>Manufacturer: {vehicle.manufacturer}</ListGroup.Item>
@@ -32,7 +31,6 @@ const AVehicleCard: React.FC<AVehicleProps> = ({vehicle}) => {
 			<ListGroup.Item>Max atmosphering speed: {vehicle.max_atmosphering_speed}</ListGroup.Item>
 			<ListGroup.Item>Cargo capacity: {new Intl.NumberFormat().format(Number(vehicle.cargo_capacity))}</ListGroup.Item>
 			<ListGroup.Item>Consumables: {vehicle.consumables}</ListGroup.Item>
-
 		</ListGroup>
 
 		 <h5 className='font-starwars mt-4'>

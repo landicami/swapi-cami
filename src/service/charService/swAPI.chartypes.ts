@@ -44,7 +44,9 @@ export interface CharactherResponse {
 			name: string;
 		},
 	}
-
+ /**
+  * A Charachter
+  */
 	interface Films {
 		id: number;
 		title: string
@@ -65,7 +67,7 @@ export interface CharactherResponse {
 		name: string;
 	}
 
-	export interface ACharachterResponse extends Charachter {
+	export interface ACharachter extends Charachter {
 		films: Films[];
 		species: Species[];
 		starships: Starships[];

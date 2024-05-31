@@ -11,7 +11,7 @@ interface APlanetProps {
 }
 
 const APlanetCard: React.FC<APlanetProps> = ({planet}) => {
-  return (
+	return (
 	<>
 	<h1 className='font-starwars'>Planet</h1>
 
@@ -21,7 +21,6 @@ const APlanetCard: React.FC<APlanetProps> = ({planet}) => {
 		</Card.Body>
 
 		<ListGroup className="list-group-flush">
-
 			<ListGroup.Item>Rotation-period:  {planet.rotation_period}</ListGroup.Item>
 			<ListGroup.Item>Orbital-period: {planet.orbital_period}</ListGroup.Item>
 			<ListGroup.Item>Diameter: {planet.diameter}</ListGroup.Item>
@@ -35,11 +34,11 @@ const APlanetCard: React.FC<APlanetProps> = ({planet}) => {
 			<h5 className='font-starwars mt-4'>
 				Residents on {planet.name}:
 			</h5>
-			{planet.residents.map(resident =>
-				<ListGroup key={resident.id}>
+			{planet.residents.map(people =>
+				<ListGroup key={people.id}>
 					<ListGroup.Item >
-					<Link className='link-card' to={`/people/${resident.id}`}>
-						{resident.name}
+					<Link className='link-card' to={`/people/${people.id}`}>
+						{people.name}
 					</Link>
 					</ListGroup.Item>
 				</ListGroup>

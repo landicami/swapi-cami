@@ -18,7 +18,6 @@ const HomePage = () => {
 					<Dropdown.Item as={Link} to="/vehicles">Search for vehicles</Dropdown.Item>
    			 </DropdownButton>
 
-
         </div>
     </div>
   )

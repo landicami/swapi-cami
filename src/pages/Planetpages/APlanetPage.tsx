@@ -55,7 +55,6 @@ const APlanetPage = () => {
 
 			<Link to={"/planets"} className='btn btn-warning mt-4 me-2' role='button'>Back to all planets</Link>
 
-
 	</Container>
 
   )

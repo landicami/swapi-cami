@@ -18,45 +18,37 @@ const Speciespage = () => {
 	const [species, setSpecies] = useState<SpecieResponse | null>(null);
 	const [error, setError] = useState<string | false>(false);
 	const [isLoading, setIsLoading] = useState(false);
-	// const [page, setPage] = useState(1);
-	// const [searchQuery, setSearchQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
 	const searchParamsQuery = searchParams.get("query");
 	const pageParams = Number(searchParams.get("page")) || 1;
 
 
 	const searchGalaxySpecies = async ( galaxySearch: string) => {
-		// setPage(1);
 		setSearchParams({query: galaxySearch.trim(), page: "1"})
-
-		// setSearchQuery(galaxySearch);
 	}
 
 	const getSpeciesData = async () => {
 		setIsLoading(true)
-	try {
-		const data = searchParamsQuery
-		? await searchASpecie(searchParamsQuery, pageParams)
-		: await getSpecies(pageParams)
-		setSpecies(data);
-		setIsLoading(false)
+		try {
+			const data = searchParamsQuery
+			? await searchASpecie(searchParamsQuery, pageParams)
+			: await getSpecies(pageParams)
+			setSpecies(data);
+			setIsLoading(false)
 
-		setError(false)
-	} catch (err) {
-		if(err instanceof Error) {
-			setError(err.message)
-		} else {
-			setError("Wrong something went, galaxy wrong it was!")
+			setError(false)
+		} catch (err) {
+			if(err instanceof Error) {
+				setError(err.message)
+			} else {
+				setError("Wrong something went, galaxy wrong it was!")
+			}
 		}
-	}
 		setIsLoading(false)
 	}
 
 	const execute = () => {
-		// setPage(1)
-		// setSearchQuery("")
 		setSearchParams({ query: "", page: "1"});
-
 	}
 
 	useEffect(()=> {
@@ -90,15 +82,14 @@ const Speciespage = () => {
 		hasPreviousPage={pageParams < species.from}
 		onNextPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams + 1).toString() })}
 		onPreviousPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams - 1).toString() })}
-
 		/>}
 
 		{species &&
-		<p className='font-starwars mt-3'>{species.total} species, {species.per_page} species max per page</p>
+			<p className='font-starwars mt-3'>{species.total} species, {species.per_page} species max per page</p>
 		}
 
 		{searchParamsQuery &&
-					<p className='font-starwars'>You searched for "{searchParamsQuery}"</p>
+			<p className='font-starwars'>You searched for "{searchParamsQuery}"</p>
 
 		}
 
@@ -106,10 +97,7 @@ const Speciespage = () => {
 		data={species}
 		/ >
 
-
 		<Link to={"/species"} className='btn btn-warning mt-4' role='button' onClick={execute}>Get all species</Link>
-
-
 
     </>
   )

@@ -26,7 +26,7 @@ export const getAVehicle = async (vehicleId:  number) => {
 Search for a vehicle
 */
 
-export const searchAVehcile = async (galaxySearch : string, page: number) => {
+export const searchAVehicle = async (galaxySearch : string, page: number) => {
 	const res = await axios.get<VehicleResponse>(`${BASE_URL}/vehicles/?search=${galaxySearch}&page=${page}`);
 	return res.data
 }

@@ -43,8 +43,9 @@ export interface StarshipResponse {
 
 
 /***
- * A starhsip
+ * A starship
  */
+
 export interface Pilot {
     id: number;
     name: string;

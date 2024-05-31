@@ -2,36 +2,36 @@ import Card from "react-bootstrap/Card";
 import ListGroup  from "react-bootstrap/ListGroup";
 
 import { Link } from "react-router-dom";
-import { SingleFilm } from "../../service/filmService/swAPI.filmTypes";
+import { ASingleFilm } from "../../service/filmService/swAPI.filmTypes";
 import React from "react";
 
 
 interface AFilmProps {
-	film: SingleFilm;
+	film: ASingleFilm;
 }
 
 const AFilmCard: React.FC<AFilmProps> = ({film}) => {
-  return (
-	<Card className='bg-dark row rounded col-10 p-2'>
-		<Card.Body>
-			<Card.Img
-			src={film.image_url}
-			className='picture-in-card'
-			/>
-			<Card.Title className='font-starwars'>{film.title}</Card.Title>
-        		<Card.Text className="flex-grow-1">
-            		{film.opening_crawl}
-        		 </Card.Text>
-		</Card.Body>
+	return (
+		<Card className='bg-dark row rounded col-10 p-2'>
+			<Card.Body>
+				<Card.Img
+				src={film.image_url}
+				className='picture-in-card'
+				/>
+				<Card.Title className='font-starwars'>{film.title}</Card.Title>
+					<Card.Text className="flex-grow-1">
+						{film.opening_crawl}
+					</Card.Text>
+			</Card.Body>
 
-		<ListGroup className="list-group-flush">
+			<ListGroup className="list-group-flush">
 
-			<ListGroup.Item>Episode:  {film.episode_id}</ListGroup.Item>
-			<ListGroup.Item>Director: {film.director}</ListGroup.Item>
-			<ListGroup.Item>Producer: {film.producer}</ListGroup.Item>
-			<ListGroup.Item>Release date: {film.release_date}</ListGroup.Item>
+				<ListGroup.Item>Episode:  {film.episode_id}</ListGroup.Item>
+				<ListGroup.Item>Director: {film.director}</ListGroup.Item>
+				<ListGroup.Item>Producer: {film.producer}</ListGroup.Item>
+				<ListGroup.Item>Release date: {film.release_date}</ListGroup.Item>
 
-		</ListGroup>
+			</ListGroup>
 
 			<h5 className='font-starwars mt-4'>
 				Charachters in {film.title}:

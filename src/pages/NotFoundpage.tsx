@@ -11,7 +11,7 @@ const NotFoundpage = () => {
 			<div className='text-center'>
 				<h1 className=" font-starwars">🛑 Not exists, does page. 🛑 <br /></h1>
 				<h2 className=" font-starwars">Try, you will again. Fail, will you?</h2>
-					<Button  className="mt-2" variant="warning" onClick={() => navigate(-1)}>
+					<Button className="mt-2" variant="warning" onClick={() => navigate(-1)}>
 						Wanna go back?
 					</Button>
 			</div>

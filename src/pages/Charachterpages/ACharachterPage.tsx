@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { getAPeople } from '../../service/charService/swAPI.char';
+import { getACharachter } from '../../service/charService/swAPI.char';
 import { ACharachterResponse } from '../../service/charService/swAPI.chartypes';
 import Container from 'react-bootstrap/Container';
 import ACharachterCard from '../../components/CharachterComponents/ACharachterCard';
@@ -16,7 +16,7 @@ const ACharachterPage = () => {
 		setIsLoading(true)
 
 		try {
-			const data = await getAPeople(charachterId);
+			const data = await getACharachter(charachterId);
 			setCharachter(data);
 		}catch (err){
 			if (err instanceof Error) {
