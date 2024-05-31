@@ -11,11 +11,11 @@ const HomePage = () => {
 			<h3 className="font-starwars"> Let's do it!</h3>
 
 			<DropdownButton id="dropdown-basic-button" title="Choose search" variant="warning">
-				<Dropdown.Item as={Link} to="/films">Search for films</Dropdown.Item>
-				<Dropdown.Item as={Link} to="/people">Search for characters</Dropdown.Item>
-				<Dropdown.Item as={Link} to="/planets">Search for planets</Dropdown.Item>
-				<Dropdown.Item as={Link} to="/species">Search for species</Dropdown.Item>
-				<Dropdown.Item as={Link} to="/vehicles">Search for vehicles</Dropdown.Item>
+					<Dropdown.Item as={Link} to="/films">Search for films</Dropdown.Item>
+					<Dropdown.Item as={Link} to="/people">Search for characters</Dropdown.Item>
+					<Dropdown.Item as={Link} to="/planets">Search for planets</Dropdown.Item>
+					<Dropdown.Item as={Link} to="/species">Search for species</Dropdown.Item>
+					<Dropdown.Item as={Link} to="/vehicles">Search for vehicles</Dropdown.Item>
    			 </DropdownButton>
 
 
