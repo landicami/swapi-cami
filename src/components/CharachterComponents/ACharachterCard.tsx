@@ -51,7 +51,7 @@ const ACharachterCard: React.FC<ACharachterProps> = ({ data }) => {
 						))
 					) : (
 						<ListGroup.Item>
-							"No affiliations for this character"
+							No affiliations for this character
 						</ListGroup.Item>
 					)
 				}
