@@ -19,6 +19,8 @@ import Speciespage from "./pages/Speciespages/Speciespage";
 import NotFoundpage from "./pages/NotFoundpage";
 
 import "./assets/scss/App.scss";
+import Starshipspage from "./pages/Starshippages/Starshipspage";
+import AStarshippage from "./pages/Starshippages/AStarshippage";
 
 function App() {
 
@@ -44,8 +46,8 @@ function App() {
 			  <Route path="/species" element={<Speciespage />} />
 			  <Route path="/species/:id" element={<ASpeciepage />} />
 
-			  {/* <Route path="/starships" element={<StarshipsPage />} />
-			  <Route path="/starships/:id" element={<Speciepage />} /> */}
+			  <Route path="/starships" element={<Starshipspage />} />
+			  <Route path="/starships/:id" element={<AStarshippage />} />
 
 			  {/* <Route path="/vehicles" element={<VehiclesPage />} />
 			  <Route path="/vechiles/:id" element={<AVechiclePage />} /> */}
