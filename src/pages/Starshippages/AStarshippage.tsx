@@ -2,9 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container';
-import { ASpecie } from '../../service/specieService/swAPI.specieTypes';
-import { getASpecie } from '../../service/specieService/swAPI.species';
-import ASpecieCard from '../../components/SpeciesComponents/ASpecieCard';
+
 import { AStarship } from '../../service/starshipService/swAPI.starshipsTypes';
 import { getAStarship } from '../../service/starshipService/swAPI.species';
 import AStarshipCard from '../../components/StarshipsComponents/AStarshipCard';

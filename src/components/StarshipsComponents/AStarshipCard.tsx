@@ -3,7 +3,6 @@ import ListGroup  from "react-bootstrap/ListGroup";
 
 import { Link } from "react-router-dom";
 import React from "react";
-import { ASpecie } from "../../service/specieService/swAPI.specieTypes";
 import { AStarship } from "../../service/starshipService/swAPI.starshipsTypes";
 
 
