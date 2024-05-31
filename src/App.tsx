@@ -8,19 +8,21 @@ import ACharachterPage from "./pages/Charachterpages/ACharachterPage";
 import AFilmPage from "./pages/Filmpages/AFilmPage";
 import APlanetPage from "./pages/Planetpages/APlanetPage";
 import ASpeciepage from "./pages/Speciespages/ASpeciepage";
-
+import AStarshippage from "./pages/Starshippages/AStarshippage";
 
 import CharachterPage from "./pages/Charachterpages/CharachterPage";
 import FilmPage from "./pages/Filmpages/FilmPage";
 import PlanetPage from "./pages/Planetpages/PlanetPage";
 import Speciespage from "./pages/Speciespages/Speciespage";
+import Starshipspage from "./pages/Starshippages/Starshipspage";
+import Vehiclespage from "./pages/VehiclesPages/Vehiclespage";
+
 
 
 import NotFoundpage from "./pages/NotFoundpage";
 
 import "./assets/scss/App.scss";
-import Starshipspage from "./pages/Starshippages/Starshipspage";
-import AStarshippage from "./pages/Starshippages/AStarshippage";
+import AVehiclepage from "./pages/VehiclesPages/AVehiclepage";
 
 function App() {
 
@@ -49,8 +51,8 @@ function App() {
 			  <Route path="/starships" element={<Starshipspage />} />
 			  <Route path="/starships/:id" element={<AStarshippage />} />
 
-			  {/* <Route path="/vehicles" element={<VehiclesPage />} />
-			  <Route path="/vechiles/:id" element={<AVechiclePage />} /> */}
+			  <Route path="/vehicles" element={<Vehiclespage />} />
+			  <Route path="/vehicles/:id" element={<AVehiclepage />} />
 
 
 			  <Route path="*" element={<NotFoundpage />} />
