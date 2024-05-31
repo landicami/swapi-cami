@@ -28,7 +28,9 @@ const [galaxyInput, setGalaxyInput] = useState("")
 		<Container className='col-lg-6 col-sm-12 mb-9'>
 			<Form onSubmit={handleGalaxySumbit}>
 				<InputGroup className="mb-3">
-					<Form.Control
+				<Form.Control
+					id="galaxy-search"
+					name="galaxy-search"
 					placeholder="Search, you must!"
 					aria-label="Search the galaxy"
 					aria-describedby="basic-galaxy-search"
@@ -36,8 +38,7 @@ const [galaxyInput, setGalaxyInput] = useState("")
 					value={galaxyInput}
 					required
 					onChange={e => setGalaxyInput(e.target.value)}
-
-					/>
+				/>
 
 				<Button variant="btn btn-warning">
 				BB-8 now!
