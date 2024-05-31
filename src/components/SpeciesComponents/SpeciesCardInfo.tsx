@@ -23,7 +23,8 @@ const SpeciesCardInfo: React.FC<CardInfoProps> = ({ data }) => {
 								</div>
 
 								<Card.Text className='mt-2'>
-									 {species.homeworld ? `Belongs to: ${species.homeworld.name}` : " Belongs to: unknown"}
+									 {species.homeworld ? `Belongs to: ${species.homeworld.name}` : " Belongs to: unknown"} <br/>
+									 Language: {species.language}
 								</Card.Text>
 								</Card.Body>
 
