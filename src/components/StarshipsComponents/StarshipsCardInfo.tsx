@@ -23,7 +23,7 @@ const StarshipsCardInfo: React.FC<CardInfoProps> = ({ data }) => {
 								</div>
 
 								<Card.Text className='mt-2'>
-									 {starships.model}
+									 Model: {starships.model}
 								</Card.Text>
 								</Card.Body>
 
