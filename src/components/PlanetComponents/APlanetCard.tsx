@@ -22,11 +22,11 @@ const APlanetCard: React.FC<APlanetProps> = ({planet}) => {
 			<ListGroup.Item>Rotation-period:  {planet.rotation_period}</ListGroup.Item>
 			<ListGroup.Item>Orbital-period: {planet.orbital_period}</ListGroup.Item>
 			<ListGroup.Item>Diameter: {planet.diameter}</ListGroup.Item>
-			<ListGroup.Item>Climate {planet.climate}</ListGroup.Item>
-			<ListGroup.Item>Gravity {planet.gravity}</ListGroup.Item>
+			<ListGroup.Item>Climate: {planet.climate}</ListGroup.Item>
+			<ListGroup.Item>Gravity: {planet.gravity}</ListGroup.Item>
 			<ListGroup.Item>Terrain: {planet.terrain}</ListGroup.Item>
-			<ListGroup.Item>Surface water {planet.surface_water}</ListGroup.Item>
-			<ListGroup.Item>Poupulation {planet.population}</ListGroup.Item>
+			<ListGroup.Item>Surface water: {planet.surface_water}</ListGroup.Item>
+			<ListGroup.Item>Poupulation: {new Intl.NumberFormat().format(Number(planet.population))}</ListGroup.Item>
 		</ListGroup>
 
 			<h5 className='font-starwars mt-4'>
