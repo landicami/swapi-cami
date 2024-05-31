@@ -83,7 +83,8 @@ const PlanetPage = () => {
 		)}
 
 		{planets && <Pagination
-		data={planets}
+		page={pageParams}
+		totalPages={planets.last_page}
 		hasNextPage={pageParams < planets.last_page}
 		hasPreviousPage={pageParams < planets.from}
 		onNextPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams + 1).toString() })}

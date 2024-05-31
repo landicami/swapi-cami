@@ -76,7 +76,8 @@ const CharachterPage = () => {
 
 	{ people &&
 		<Pagination
-		data={people}
+		page={pageParams}
+		totalPages={people.last_page}
 		hasNextPage={pageParams < people.last_page}
 		hasPreviousPage={pageParams < people.from}
 		onNextPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams + 1).toString() })}

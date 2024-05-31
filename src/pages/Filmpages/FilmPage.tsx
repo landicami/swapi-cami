@@ -83,7 +83,8 @@ const FilmPage = () => {
 		)}
 
 		{films && <Pagination
-		data={films}
+		page={pageParams}
+		totalPages={films.last_page}
 		hasNextPage={pageParams < films.last_page}
 		hasPreviousPage={pageParams < films.from}
 		onNextPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams + 1).toString() })}

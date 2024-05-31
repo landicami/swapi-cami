@@ -84,7 +84,8 @@ const Speciespage = () => {
 		)}
 
 		{species && <Pagination
-		data={species}
+		page={pageParams}
+		totalPages={species.last_page}
 		hasNextPage={pageParams < species.last_page}
 		hasPreviousPage={pageParams < species.from}
 		onNextPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams + 1).toString() })}

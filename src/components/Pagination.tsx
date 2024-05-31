@@ -1,22 +1,23 @@
+import React from "react";
 import Button from "react-bootstrap/Button";
 
-interface PaginationProps<T>{
+interface PaginationProps{
 	hasNextPage: boolean
 	hasPreviousPage: boolean;
-
-	data: T;
+	page: number
+	totalPages: number
 	onNextPage: () => void;
 	onPreviousPage: () => void;
-
 }
 
-const Pagination = <T extends { current_page: number; last_page: number }>({
-	data,
+const Pagination: React.FC<PaginationProps> = ({
+	page,
+	totalPages,
 	hasPreviousPage,
 	hasNextPage,
 	onNextPage,
 	onPreviousPage,
-  }: PaginationProps<T>) => {
+  }) => {
   return (
 
 		<div className='row'>
@@ -32,7 +33,7 @@ const Pagination = <T extends { current_page: number; last_page: number }>({
 				</div>
 				<div className='bg-dark mb-0 p-2 rounded'>
 					<p className='m-0 font-starwars'>
-						{data.current_page} of {data.last_page}
+						{page} of {totalPages}
 					</p>
 				</div>
 				<div>
