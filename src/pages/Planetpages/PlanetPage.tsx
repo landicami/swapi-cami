@@ -17,15 +17,16 @@ const PlanetPage = () => {
 	const [planets, setPlanets] = useState<PlanetResponse | null>(null);
 	const [error, setError] = useState<string | false>(false);
 	const [isLoading, setIsLoading] = useState(false);
-	const [page, setPage] = useState(1);
+	// const [page, setPage] = useState(1);
 	// const [searchQuery, setSearchQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
 	const searchParamsQuery = searchParams.get("query");
+	const pageParams = Number(searchParams.get("page")) || 1;
 
 
 	const searchGalaxyPlanet = async ( galaxySearch: string) => {
-		setPage(1);
-		setSearchParams({query: galaxySearch.trim()})
+		// setPage(1);
+		setSearchParams({query: galaxySearch.trim(), page: "1"})
 
 		// setSearchQuery(galaxySearch);
 	}
@@ -34,8 +35,8 @@ const PlanetPage = () => {
 		setIsLoading(true)
 	try {
 		const data = searchParamsQuery
-		? await searchAPlanet(searchParamsQuery, page)
-		: await getPlanets(page)
+		? await searchAPlanet(searchParamsQuery, pageParams)
+		: await getPlanets(pageParams)
 		setPlanets(data);
 		setIsLoading(false)
 
@@ -51,15 +52,15 @@ const PlanetPage = () => {
 	}
 
 	const execute = () => {
-		setPage(1)
+		// setPage(1)
 		// setSearchQuery("")
-		setSearchParams({});
+		setSearchParams({ query: "", page: "1"});
 
 	}
 
 	useEffect(()=> {
 		getPlanetData();
-	}, [page, searchParamsQuery])
+	}, [pageParams, searchParamsQuery])
 
   return (
     <>
@@ -83,10 +84,10 @@ const PlanetPage = () => {
 
 		{planets && <Pagination
 		data={planets}
-		hasNextPage={page < planets.last_page}
-		hasPreviousPage={page < planets.from}
-		onNextPage={() => { setPage(prevValue => prevValue + 1) }}
-		onPreviousPage={() => { setPage(prevValue => prevValue - 1) }}
+		hasNextPage={pageParams < planets.last_page}
+		hasPreviousPage={pageParams < planets.from}
+		onNextPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams + 1).toString() })}
+		onPreviousPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams - 1).toString() })}
 
 
 		/>}

@@ -16,16 +16,18 @@ const CharachterPage = () => {
 	const [ people, setPeople ] = useState<CharactherResponse | null>(null);
 	const [ error, setError ] = useState<string | false>(false)
 	const [isLoading, setIsLoading] = useState(false);
-	const [page, setPage] = useState(1);
+	// const [page, setPage] = useState(1);
 	// const [searchQuery, setSearchQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const searchParamsQuery = searchParams.get("query");
+	const pageParams = Number(searchParams.get("page")) || 1;
+
 
 
 	const searchGalaxyCharachter = async (galaxySearch: string = "") => {
-        setPage(1);
-		setSearchParams({query: galaxySearch.trim()})
+        // setPage(1);
+		setSearchParams({query: galaxySearch.trim(), page: "1"})
 
 
         // setSearchQuery(galaxySearch.trim());
@@ -35,8 +37,8 @@ const CharachterPage = () => {
         setIsLoading(true);
         try {
             const data = searchParamsQuery
-                ? await searchACharachter(searchParamsQuery, page)
-                : await getAllPeople(page);
+                ? await searchACharachter(searchParamsQuery, pageParams)
+                : await getAllPeople(pageParams);
             setPeople(data);
             setError(false);
         } catch (err) {
@@ -50,14 +52,14 @@ const CharachterPage = () => {
     };
 
 	const execute = () => {
-		setPage(1)
+		// setPage(1)
 		// setSearchQuery("")
-		setSearchParams({});
+		setSearchParams({ query: "", page: "1"});
 	}
 
     useEffect(() => {
         getCharachterData();
-    }, [page, searchParamsQuery]);
+    }, [pageParams, searchParamsQuery]);
 
 
 
@@ -75,10 +77,11 @@ const CharachterPage = () => {
 	{ people &&
 		<Pagination
 		data={people}
-		hasNextPage={page < people.last_page}
-		hasPreviousPage={page < people.from}
-		onNextPage={() => { setPage(prevValue => prevValue + 1) }}
-		onPreviousPage={() => { setPage(prevValue => prevValue - 1) }}
+		hasNextPage={pageParams < people.last_page}
+		hasPreviousPage={pageParams < people.from}
+		onNextPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams + 1).toString() })}
+		onPreviousPage={() => setSearchParams({ query: searchParamsQuery || "", page: (pageParams - 1).toString() })}
+
 
 		/>}
 
