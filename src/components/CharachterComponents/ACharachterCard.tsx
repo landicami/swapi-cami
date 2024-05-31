@@ -35,7 +35,7 @@ const ACharachterCard: React.FC<ACharachterProps> = ({ data }) => {
 			<ListGroup.Item>Skin-color:  {data.skin_color}</ListGroup.Item>
 			<ListGroup.Item><Link to={data.wiki_link}>Wiki-link</Link></ListGroup.Item>
 			<ListGroup.Item>Hair-color:  {data.hair_color}</ListGroup.Item>
-			<ListGroup.Item><strong>Home-world:</strong>  {data.homeworld.name}</ListGroup.Item>
+			<ListGroup.Item>Home-world: {data.homeworld.name}</ListGroup.Item>
 		</ListGroup>
 
 			<h5 className='font-starwars mt-4'>
@@ -83,9 +83,11 @@ const ACharachterCard: React.FC<ACharachterProps> = ({ data }) => {
 					<>
 						{data.species.map(specie => (
 							<ListGroup key={specie.name}>
+								<Link to={`/species/${specie.id}`} className='link-card'>
 								<ListGroup.Item>
 									{specie.name}
 								</ListGroup.Item>
+								</Link>
 							</ListGroup>
 						))}
 					</>
@@ -97,6 +99,30 @@ const ACharachterCard: React.FC<ACharachterProps> = ({ data }) => {
 					</ListGroup>
 				)
 				}
+				<h5 className='font-starwars mt-4'>
+					Starships used:
+				</h5>
+					{data.starships.length > 0
+					? (
+					<>
+						{data.starships.map(starship => (
+							<ListGroup key={starship.id}>
+								<Link to={`/starships/${starship.id}`} className='link-card'>
+									<ListGroup.Item>
+										{starship.name}
+									</ListGroup.Item>
+								</Link>
+							</ListGroup>
+						))}
+					</>
+					) : (
+					<ListGroup>
+						<ListGroup.Item>
+							No starship for this character
+						</ListGroup.Item>
+					</ListGroup>
+					)
+					}
 
 				<h5 className='font-starwars mt-4'>
 					Vehicles used:
@@ -106,9 +132,11 @@ const ACharachterCard: React.FC<ACharachterProps> = ({ data }) => {
 					<>
 						{data.vehicles.map(vehicle => (
 							<ListGroup key={vehicle.id}>
-								<ListGroup.Item>
-									{vehicle.name}
-								</ListGroup.Item>
+								<Link to={`/vehcile/${vehicle.id}`} className='link-card'>
+									<ListGroup.Item>
+										{vehicle.name}
+									</ListGroup.Item>
+								</Link>
 							</ListGroup>
 						))}
 					</>
@@ -120,7 +148,6 @@ const ACharachterCard: React.FC<ACharachterProps> = ({ data }) => {
 					</ListGroup>
 					)
 					}
-
 	</Card>
 	</>
   )
