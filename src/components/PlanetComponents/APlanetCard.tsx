@@ -12,6 +12,9 @@ interface APlanetProps {
 
 const APlanetCard: React.FC<APlanetProps> = ({planet}) => {
   return (
+	<>
+	<h1 className='font-starwars'>Planet</h1>
+
 	<Card className='bg-dark row rounded col-10 p-2'>
 		<Card.Body>
 			<Card.Title className='font-starwars'>{planet.name}</Card.Title>
@@ -33,29 +36,31 @@ const APlanetCard: React.FC<APlanetProps> = ({planet}) => {
 				Residents on {planet.name}:
 			</h5>
 			{planet.residents.map(resident =>
-				<Link key={resident.id} to={`/people/${resident.id}`}>
-					<ListGroup>
-						<ListGroup.Item className='link-card'>
-							{resident.name}
-						</ListGroup.Item>
-					</ListGroup>
-				</Link>
+				<ListGroup key={resident.id}>
+					<ListGroup.Item >
+					<Link className='link-card' to={`/people/${resident.id}`}>
+						{resident.name}
+					</Link>
+					</ListGroup.Item>
+				</ListGroup>
+
 			)}
 
 			<h5 className='font-starwars mt-4'>
 				Seen in:
 			</h5>
 				{planet.films.map(film =>
-				<Link key={film.id} to={`/film/${film.id}`}>
-					<ListGroup>
-						<ListGroup.Item className="link-card">
+					<ListGroup key={film.id} >
+						<ListGroup.Item  >
+						<Link className="link-card" to={`/films/${film.id}`}>
 							{film.title}
+						</Link>
 						</ListGroup.Item>
 					</ListGroup>
-					</Link>
 				)}
 
 	</Card>
+	</>
   )
 }
 

@@ -4,7 +4,7 @@ import { ASpecie, SpecieResponse } from "./swAPI.specieTypes";
 const BASE_URL = "https://swapi.thehiveresistance.com/api";
 
 /**
- * Get all planets
+ * Get all species
  */
 
 export const getSpecies = async (page: number) => {
@@ -13,7 +13,7 @@ export const getSpecies = async (page: number) => {
 }
 
 /**
- * Get A Planet
+ * Get A specie
  */
 
 export const getASpecie = async (specieId:  number) => {
@@ -23,7 +23,7 @@ export const getASpecie = async (specieId:  number) => {
 
 
 /**
-Search for a planet
+Search for a specie
 */
 
 export const searchASpecie = async (galaxySearch : string, page: number) => {

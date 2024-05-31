@@ -66,7 +66,7 @@ const Speciespage = () => {
   return (
     <>
 
-    	<h1 className='font-starwars'>Planets</h1>
+    	<h1 className='font-starwars'>Species</h1>
 		<GalaxyForm
 		onSearchGalaxy={searchGalaxySpecies}
 		/>

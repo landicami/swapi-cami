@@ -12,6 +12,9 @@ interface ASpecieProps {
 
 const ASpecieCard: React.FC<ASpecieProps> = ({specie}) => {
   return (
+  <>
+  	<h1 className='font-starwars'>Specie</h1>
+
 	<Card className='bg-dark row rounded col-10 p-2'>
 		<Card.Body>
 			<Card.Title className='font-starwars'>{specie.name}</Card.Title>
@@ -47,7 +50,7 @@ const ASpecieCard: React.FC<ASpecieProps> = ({specie}) => {
 				Seen in:
 			</h5>
 				{specie.films.map(film =>
-				<Link key={film.id} to={`/film/${film.id}`}>
+				<Link key={film.id} to={`/films/${film.id}`}>
 					<ListGroup>
 						<ListGroup.Item className="link-card">
 							{film.title}
@@ -57,6 +60,8 @@ const ASpecieCard: React.FC<ASpecieProps> = ({specie}) => {
 				)}
 
 	</Card>
+	</>
+
   )
 }
 

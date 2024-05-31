@@ -64,10 +64,11 @@ const CharachterPage = () => {
 
 
 
-  return (
+  return (<>
+	<h1 className='font-starwars'>Charachters</h1>
+
 	<Container className='row'>
 
-		<h1 className='font-starwars mt-2'>Charachters</h1>
 
 		<GalaxyForm
 		onSearchGalaxy={searchGalaxyCharachter}
@@ -118,6 +119,7 @@ const CharachterPage = () => {
 		</div>
 
 	</Container>
+	</>
 )
 }
 
