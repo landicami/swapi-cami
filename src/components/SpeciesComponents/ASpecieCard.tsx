@@ -19,12 +19,19 @@ const ASpecieCard: React.FC<ASpecieProps> = ({specie}) => {
 
 		<ListGroup className="list-group-flush">
 
-			{/* <ListGroup.Item>Rotation-period:  {planet.rotation_period}</ListGroup.Item> */}
+			<ListGroup.Item>Classification: {specie.classification}</ListGroup.Item>
+			<ListGroup.Item>Designation: {specie.designation}</ListGroup.Item>
+			<ListGroup.Item>Average height: {specie.average_height}</ListGroup.Item>
+			<ListGroup.Item>Average lifespan: {specie.average_lifespan}</ListGroup.Item>
+			<ListGroup.Item>Eye colors: {specie.eye_colors}</ListGroup.Item>
+			<ListGroup.Item>Hair colors: {specie.hair_colors}</ListGroup.Item>
+			<ListGroup.Item>Skin colors: {specie.skin_colors}</ListGroup.Item>
+			<ListGroup.Item>Language: {specie.language}</ListGroup.Item>
 
 		</ListGroup>
 
 			<h5 className='font-starwars mt-4'>
-				People of {specie.name}:
+				Examples of {specie.name}:
 			</h5>
 			{specie. people.map(s =>
 				<Link key={s.id} to={`/people/${s.id}`}>
@@ -35,11 +42,11 @@ const ASpecieCard: React.FC<ASpecieProps> = ({specie}) => {
 					</ListGroup>
 				</Link>
 			)}
-{/*
+
 			<h5 className='font-starwars mt-4'>
 				Seen in:
 			</h5>
-				{planet.films.map(film =>
+				{specie.films.map(film =>
 				<Link key={film.id} to={`/film/${film.id}`}>
 					<ListGroup>
 						<ListGroup.Item className="link-card">
@@ -47,7 +54,7 @@ const ASpecieCard: React.FC<ASpecieProps> = ({specie}) => {
 						</ListGroup.Item>
 					</ListGroup>
 					</Link>
-				)} */}
+				)}
 
 	</Card>
   )
