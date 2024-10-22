@@ -50,6 +50,7 @@ const CharachterPage = () => {
 
     useEffect(() => {
         getCharachterData();
+		// eslint-disable-next-line
     }, [pageParams, searchParamsQuery]);
 
 
