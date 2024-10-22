@@ -11,15 +11,15 @@ interface ACharachterProps {
 const ACharachterCard: React.FC<ACharachterProps> = ({ data }) => {
 	return (
 	<>
-	<h1 className='font-starwars'>Charachter</h1>
+	<h1 className='font-starwars'>Character</h1>
 
 	<Card className='bg-dark row rounded col-10 p-2'>
 		<Card.Body>
 			<Card.Img
-  			src={data.image_url}
-  			className='picture-in-card'
-			alt="A StarWars charachter"
-  			/>
+			src={data.image_url}
+			className='picture-in-card'
+			alt="A StarWars character"
+		/>
 			<Card.Title className='font-starwars'>
 				{data.name}
 			</Card.Title>

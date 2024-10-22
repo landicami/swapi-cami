@@ -54,8 +54,8 @@ const CharachterPage = () => {
 
 
 	return (
-  	<>
-	<h1 className='font-starwars'>Charachters</h1>
+	<>
+	<h1 className='font-starwars'>Characters</h1>
 
 	<Container className='row'>
 
@@ -87,7 +87,7 @@ const CharachterPage = () => {
 
 
 		{people &&
-			<p className='font-starwars mt-3'>{people.total} charachters, {people.per_page} charachers per page</p>
+			<p className='font-starwars mt-3'>{people.total} characters, {people.per_page} characters per page</p>
 		}
 
 		{searchParamsQuery &&

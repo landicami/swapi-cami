@@ -49,7 +49,7 @@ const ACharachterPage = () => {
 
 			{charachter && <ACharachterCard data={charachter} />}
 
-			<Link to={"/people"} className='btn btn-warning mt-4 me-2' role='button'>Back to all charachters</Link>
+			<Link to={"/people"} className='btn btn-warning mt-4 me-2' role='button'>Back to all characters</Link>
 
 	</Container>
 

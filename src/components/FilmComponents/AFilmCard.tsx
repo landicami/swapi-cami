@@ -34,7 +34,7 @@ const AFilmCard: React.FC<AFilmProps> = ({film}) => {
 			</ListGroup>
 
 			<h5 className='font-starwars mt-4'>
-				Charachters in {film.title}:
+				Characters in {film.title}:
 			</h5>
 			{film.characters.map(charachter =>
 				<Link key={charachter.id} to={`/people/${charachter.id}`}>
